@@ -3,9 +3,9 @@ import React from 'react';
 class ListItems extends React.Component{
   render(){
     return(
-      <li>
-				{this.props.task} <button type="button">Delete</button>
-			</li>
+      <div>
+				{this.props.task} <button type="button">Update</button> <button type="button">Delete</button>
+			</div>
     );
   }
 }
@@ -18,18 +18,28 @@ class TODOList extends React.Component{
       taskRows.push(<ListItems task={task.task} key={task.id} />);
     });
     return (
-      <table>
+      <div>
         {taskRows}
-      </table>
+      </div>
     );
   }
 }
 
 class TODOAddForm extends React.Component{
+  constructor(props){
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleSubmit(e) {
+    this.props.onTaskSubmit(e.target.value);
+    console.log(e.target.value);
+    e.preventDefault();
+	}
+
   render(){
     return(
-      <form>
-        <input type="text" placeholder="Enter new task here" />
+      <form onSubmit={this.handleSubmit}>
+        <input type="text" value={this.props.tasks} placeholder="Enter new task here" />
         <input type="submit" value="Add" />
       </form>
     );
@@ -37,20 +47,41 @@ class TODOAddForm extends React.Component{
 }
 
 class TODOApp extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      data: [
+        {id: '1', task: 'learn React'},
+        {id: '2', task: 'apply React'}
+      ]
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleTaskRemoval(nodeId) {
+		let data = this.state.data;
+
+		// data = data.filter(function (e) {
+		// 	return e.id !== nodeId;
+		// });
+		this.setState({data : data});
+	}
+
+  handleSubmit(task) {
+		let data = this.state.data;
+		let id = data.length + 2 ;
+		data = data.concat([{id, task}]);
+		this.setState({data : data});
+	}
 
   render() {
     return (
       <div>
-        <TODOAddForm />
-        <TODOList tasks={TASKS} />
+        <TODOAddForm onTaskSubmit = {this.handleSubmit}/>
+        <TODOList tasks={this.state.data} removeTask={this.handleTaskRemoval} />
       </div>
     );
   }
 }
-
-let TASKS = [
-  {id: '1', task: 'learn React'},
-  {id: '2', task: 'apply React'}
-];
 
 export default TODOApp;
