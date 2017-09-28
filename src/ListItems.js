@@ -25,7 +25,7 @@ class ListItems extends React.Component{
         <button type="button" onClick={this.removeTask}>Delete task</button>
         <form onSubmit={this.updateTask}>
           <input type="submit" value="Update" />
-          <input type="text" ref={(input) => this.todoUpdate = input} placeholder="Update the task here" />
+          <input type="text" required ref={(input) => this.todoUpdate = input} placeholder="Update the task here" />
         </form>
 			</div>
     );
