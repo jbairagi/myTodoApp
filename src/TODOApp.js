@@ -30,7 +30,7 @@ class TODOApp extends React.Component {
 
   handleSubmit(task) {
 		let data = this.state.data;
-		let id = data.length + 1 ;
+		let id = data[data.length - 1].id + 1;
 		data = data.concat([{id, task}]);
 		this.setState({data : data});
 	}
