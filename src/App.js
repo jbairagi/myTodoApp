@@ -97,10 +97,7 @@ class TODOApp extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      data: [
-        {id: 1, task: 'learn React'},
-        {id: 2, task: 'apply React'}
-      ]
+      data: this.props.tasks
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTaskRemoval = this.handleTaskRemoval.bind(this);
