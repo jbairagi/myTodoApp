@@ -1,7 +1,7 @@
 import React from 'react';
 
 class TODOAddForm extends React.Component{
-  constructor(props){
+  constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -11,7 +11,7 @@ class TODOAddForm extends React.Component{
     e.preventDefault();
 	}
 
-  render(){
+  render() {
     return(
       <form onSubmit={this.handleSubmit}>
         <input type="text" ref={(input) => this.todoInput = input} placeholder="Enter new task here" />
