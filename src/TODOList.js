@@ -2,17 +2,18 @@ import React from 'react';
 import ListItems from './ListItems';
 
 class TODOList extends React.Component{
-  constructor(props){
+  constructor(props) {
     super(props);
     this.removeTask = this.removeTask.bind(this);
     this.updateTask = this.updateTask.bind(this);
   }
 
-  removeTask(taskId){
+  removeTask(taskId) {
     this.props.removeTask(taskId);
 		return;
   }
-  updateTask(task, taskId){
+
+  updateTask(task, taskId) {
     this.props.updateTask(task, taskId);
 		return;
   }
