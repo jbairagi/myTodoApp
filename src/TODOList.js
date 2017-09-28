@@ -10,12 +10,10 @@ class TODOList extends React.Component{
 
   removeTask(taskId) {
     this.props.removeTask(taskId);
-		return;
   }
 
   updateTask(task, taskId) {
     this.props.updateTask(task, taskId);
-		return;
   }
 
   render() {
