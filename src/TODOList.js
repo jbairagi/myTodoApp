@@ -24,9 +24,9 @@ class TODOList extends React.Component{
 		},this);
 
     return (
-      <div>
-        {taskRows}
-      </div>
+      <ul className="list-group">
+				{taskRows}
+			</ul>
     );
   }
 }

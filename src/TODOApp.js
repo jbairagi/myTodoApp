@@ -2,6 +2,7 @@ import React from 'react';
 import TODOAddForm from './TODOAddForm';
 import TODOList from './TODOList';
 import AppHead from './AppHead';
+import './App.css';
 
 class TODOApp extends React.Component {
   constructor(props){
@@ -37,10 +38,14 @@ class TODOApp extends React.Component {
 
   render() {
     return (
-      <div>
-        <AppHead />
-        <TODOAddForm onTaskSubmit = {this.handleSubmit}/>
-        <TODOList tasks={this.state.data} updateTask={this.handleTaskUpdation} removeTask={this.handleTaskRemoval} />
+      <div className="container">
+        <div className="row">
+          <div className="col-md-8 col-md-offset-2">
+            <AppHead />
+            <TODOAddForm onTaskSubmit = {this.handleSubmit}/>
+            <TODOList tasks={this.state.data} updateTask={this.handleTaskUpdation} removeTask={this.handleTaskRemoval} />
+          </div>
+        </div>
       </div>
     );
   }

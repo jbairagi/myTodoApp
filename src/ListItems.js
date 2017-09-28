@@ -13,21 +13,22 @@ class ListItems extends React.Component{
 	}
 
   updateTask(e) {
-		this.props.updateTask(this.todoUpdate.value, this.props.taskId);
-  	e.preventDefault();
+    if(this.todoUpdate.value === '')
+      e.preventDefault();
+    else{
+		  this.props.updateTask(this.todoUpdate.value, this.props.taskId);
+  	  e.preventDefault();
+    }
 	}
 
   render() {
     return (
-      <div>
-        <br></br>
-				Task {this.props.taskId}: {this.props.task} <br></br>
-        <button type="button" onClick={this.removeTask}>Delete task</button>
-        <form onSubmit={this.updateTask}>
-          <input type="submit" value="Update" />
-          <input type="text" required ref={(input) => this.todoUpdate = input} placeholder="Update the task here" />
-        </form>
-			</div>
+      <li className='list-group-item clearfix add-space'>
+			  Task {this.props.taskId}: {this.props.task}
+        <input type="text" className="form-control add-space" required ref={(input) => this.todoUpdate = input} placeholder="Update the task here" />
+        <button type="button" className="btn btn-info add-space" onClick={this.updateTask}>Update</button> {' '}
+        <button type="button" className="btn btn-danger add-space" onClick={this.removeTask}>Delete</button>
+			</li>
     );
   }
 }
