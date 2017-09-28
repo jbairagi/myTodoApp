@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import TODOApp from './App';
+import TODOApp from './TODOApp';
 import registerServiceWorker from './registerServiceWorker';
 
 let TASKS = [
-  {id: '1', task: 'learn React'},
-  {id: '2', task: 'apply React'}
+  {id: 1, task: 'learn React'},
+  {id: 2, task: 'apply React'}
 ];
 
 ReactDOM.render(<TODOApp tasks={TASKS} />, document.getElementById('root'));

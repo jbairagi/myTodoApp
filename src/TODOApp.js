@@ -1,77 +1,7 @@
 import React from 'react';
 import TODOAddForm from './TODOAddForm';
-
-class ListItems extends React.Component{
-  constructor(props){
-    super(props);
-    this.removeTask = this.removeTask.bind(this);
-    this.updateTask = this.updateTask.bind(this);
-  }
-
-  removeTask(e) {
-		this.props.removeTask(this.props.taskId);
-  	e.preventDefault();
-	}
-  updateTask(e) {
-		this.props.updateTask(this.todoUpdate.value, this.props.taskId);
-  	e.preventDefault();
-	}
-
-  render(){
-    return(
-      <div>
-        <br></br>
-				Task {this.props.taskId}: {this.props.task} <br></br>
-        <button type="button" onClick={this.removeTask}>Delete task</button>
-        <form onSubmit={this.updateTask}>
-          <input type="submit" value="Update" />
-          <input type="text" ref={(input) => this.todoUpdate = input} placeholder="Update the task here" />
-        </form>
-			</div>
-    );
-  }
-}
-
-class TODOList extends React.Component{
-  constructor(props){
-    super(props);
-    this.removeTask = this.removeTask.bind(this);
-    this.updateTask = this.updateTask.bind(this);
-  }
-
-  removeTask(taskId){
-    this.props.removeTask(taskId);
-		return;
-  }
-  updateTask(task, taskId){
-    this.props.updateTask(task, taskId);
-		return;
-  }
-
-  render() {
-    const taskRows = this.props.tasks.map(function (task) {
-			return (
-        <ListItems task={task.task} taskId={task.id} removeTask={this.removeTask} updateTask={this.updateTask} key={task.id} />
-			);
-		},this);
-
-    return (
-      <div>
-        {taskRows}
-      </div>
-    );
-  }
-}
-
-class AppHead extends React.Component{
-  render(){
-    return(
-      <div>
-        Todo List App:<br></br><br></br>
-      </div>
-    );
-  }
-}
+import TODOList from './TODOList';
+import AppHead from './AppHead';
 
 class TODOApp extends React.Component {
   constructor(props){
