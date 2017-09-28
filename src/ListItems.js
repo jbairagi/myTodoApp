@@ -22,12 +22,31 @@ class ListItems extends React.Component{
 	}
 
   render() {
+    const id = "collapseExample-" + this.props.taskId;
+    const href = "#"+id;
     return (
       <li className='list-group-item clearfix add-space'>
 			  Task {this.props.taskId}: {this.props.task}
-        <input type="text" className="form-control add-space" required ref={(input) => this.todoUpdate = input} placeholder="Update the task here" />
-        <button type="button" className="btn btn-info add-space" onClick={this.updateTask}>Update</button> {' '}
-        <button type="button" className="btn btn-danger add-space" onClick={this.removeTask}>Delete</button>
+        <p>
+          <button type="button" className="btn btn-danger add-space" onClick={this.removeTask}>Delete</button> {' '}
+          <a className="btn btn-primary add-space" data-toggle="collapse" href= {href} aria-expanded="false" aria-controls="collapseExample">
+            Update
+          </a>
+        </p>
+        <div className="collapse" id={id}>
+          <div className="card card-body">
+            <div className="row">
+              <div className="col-xs-12">
+                <div className="input-group input-group-lg">
+                  <input type="text" className="form-control add-space" required ref={(input) => this.todoUpdate = input} placeholder="Update the task here" />
+                  <div className="input-group-btn">
+                    <button type="button" className="btn btn-info add-space" data-toggle="collapse" href= {href} aria-expanded="false" aria-controls="collapseExample" onClick={this.updateTask}>&#x2713;</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 			</li>
     );
   }
