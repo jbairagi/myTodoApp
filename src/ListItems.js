@@ -1,7 +1,7 @@
 import React from 'react';
 
 class ListItems extends React.Component{
-  constructor(props){
+  constructor(props) {
     super(props);
     this.removeTask = this.removeTask.bind(this);
     this.updateTask = this.updateTask.bind(this);
@@ -17,8 +17,8 @@ class ListItems extends React.Component{
   	e.preventDefault();
 	}
 
-  render(){
-    return(
+  render() {
+    return (
       <div>
         <br></br>
 				Task {this.props.taskId}: {this.props.task} <br></br>
