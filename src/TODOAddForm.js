@@ -31,14 +31,3 @@ class TODOAddForm extends React.Component{
 }
 
 export default TODOAddForm;
-
-
-
-
-
-// <form className="form-inline add-space" onSubmit={this.handleSubmit}>
-//   <div className="form-group">
-//     <input type="text" className="form-control" required ref={(input) => this.todoInput = input} placeholder="Enter new task here" />
-//   </div>
-//   <input type="submit" className="btn btn-success add-btn pull-right"  value="Add" />
-// </form>
