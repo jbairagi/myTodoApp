@@ -1,8 +1,8 @@
 import React from 'react';
 
-class AppHead extends React.Component{
-  render(){
-    return(
+class AppHead extends React.Component {
+  render() {
+    return (
       <div>
         Todo List App:<br></br><br></br>
       </div>
