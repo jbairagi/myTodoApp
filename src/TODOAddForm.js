@@ -14,7 +14,7 @@ class TODOAddForm extends React.Component{
   render() {
     return(
       <form onSubmit={this.handleSubmit}>
-        <input type="text" ref={(input) => this.todoInput = input} placeholder="Enter new task here" />
+        <input type="text" required ref={(input) => this.todoInput = input} placeholder="Enter new task here" />
         <input type="submit" value="Add" />
       </form>
     );
