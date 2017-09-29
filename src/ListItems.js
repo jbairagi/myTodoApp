@@ -1,21 +1,15 @@
 import React from 'react';
 
 class ListItems extends React.Component{
-  constructor(props) {
-    super(props);
-    this.removeTask = this.removeTask.bind(this);
-    this.updateTask = this.updateTask.bind(this);
-  }
-
-  removeTask(e) {
-		this.props.removeTask(this.props.taskId);
+  removeTask = (e) => {
+		this.props.removeTasko(this.props.taskId);
   	e.preventDefault();
 	}
 
-  updateTask(e) {
+  updateTask = (e) => {
     if(this.todoUpdate.value === '')
       e.preventDefault();
-    else{
+    else {
 		  this.props.updateTask(this.todoUpdate.value, this.props.taskId);
   	  e.preventDefault();
     }
