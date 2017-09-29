@@ -13,25 +13,25 @@ class TODOApp extends React.Component {
   }
 
   handleTaskRemoval = (taskId) => {
-		let data = this.state.data;
-		data = data.filter(function (e) {
-			return e.id !== taskId;
-		});
-		this.setState({data : data});
-	}
+    let data = this.state.data;
+    data = data.filter(function (e) {
+      return e.id !== taskId;
+    });
+    this.setState({data : data});
+  }
 
   handleTaskUpdation = (task, taskId) => {
-		let data = this.state.data;
+    let data = this.state.data;
     data[data.findIndex((obj => obj.id === taskId))].task = task;
-		this.setState({data : data});
-	}
+    this.setState({data : data});
+  }
 
   handleSubmit = (task) => {
-		let data = this.state.data;
-		let id = data[data.length - 1].id + 1;
-		data = data.concat([{id, task}]);
-		this.setState({data : data});
-	}
+    let data = this.state.data;
+    let id = data[data.length - 1].id + 1;
+    data = data.concat([{id, task}]);
+    this.setState({data : data});
+  }
 
   render() {
     return (

@@ -6,12 +6,12 @@ function TODOList(props){
     return (
       <ListItems task={task.task} taskId={task.id} removeTasko={props.removeTask} updateTask={props.updateTask} key={task.id} />
     );
-	},this);
+  },this);
 
   return (
     <ul className="list-group">
-			{taskRows}
-		</ul>
+      {taskRows}
+    </ul>
   );
 }
 

@@ -2,18 +2,18 @@ import React from 'react';
 
 class ListItems extends React.Component{
   removeTask = (e) => {
-		this.props.removeTasko(this.props.taskId);
-  	e.preventDefault();
-	}
+    this.props.removeTasko(this.props.taskId);
+    e.preventDefault();
+  }
 
   updateTask = (e) => {
     if(this.todoUpdate.value === '')
       e.preventDefault();
     else {
-		  this.props.updateTask(this.todoUpdate.value, this.props.taskId);
-  	  e.preventDefault();
+      this.props.updateTask(this.todoUpdate.value, this.props.taskId);
+      e.preventDefault();
     }
-	}
+  }
 
   render() {
     const id = "collapseExample-" + this.props.taskId;
