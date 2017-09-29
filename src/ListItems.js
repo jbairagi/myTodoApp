@@ -20,7 +20,7 @@ class ListItems extends React.Component{
     const href = "#"+id;
     return (
       <li className='list-group-item clearfix add-space'>
-			  Task {this.props.taskId}: {this.props.task}
+			  Task: {this.props.task}
         <p>
           <button type="button" className="btn btn-danger add-space" onClick={this.removeTask}>Delete</button> {' '}
           <a className="btn btn-primary add-space" data-toggle="collapse" href= {href} aria-expanded="false" aria-controls="collapseExample">

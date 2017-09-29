@@ -4,6 +4,12 @@ import TODOList from './TODOList';
 import AppHead from './AppHead';
 import './App.css';
 
+var generator = () => {
+  return Math.floor((1 + Math.random()) * 0x10000)
+  .toString(16)
+  .substring(1);
+}
+
 class TODOApp extends React.Component {
   constructor(props){
     super(props);
@@ -28,11 +34,7 @@ class TODOApp extends React.Component {
 
   handleSubmit = (task) => {
     let data = this.state.data;
-    let id;
-    if(data.length > 0)
-      id = data[data.length - 1].id + 1;
-    else
-      id = 1;
+    let id = generator()+generator()+'-'+generator()+'-'+generator()+'-'+generator();
     data = data.concat([{id, task}]);
     this.setState({data : data});
   }
