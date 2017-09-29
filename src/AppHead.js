@@ -4,8 +4,8 @@ import './App.css';
 class AppHead extends React.Component {
   render() {
     return (
-      <div className="App-header">
-        <p className="App-title">
+      <div className="app-header">
+        <p className="app-title">
           Todo List App
         </p>
       </div>
