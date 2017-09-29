@@ -10,12 +10,9 @@ class TODOApp extends React.Component {
     this.state = {
       data: this.props.tasks
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleTaskRemoval = this.handleTaskRemoval.bind(this);
-    this.handleTaskUpdation = this.handleTaskUpdation.bind(this);
   }
 
-  handleTaskRemoval(taskId) {
+  handleTaskRemoval = (taskId) => {
 		let data = this.state.data;
 		data = data.filter(function (e) {
 			return e.id !== taskId;
@@ -23,13 +20,13 @@ class TODOApp extends React.Component {
 		this.setState({data : data});
 	}
 
-  handleTaskUpdation(task, taskId) {
+  handleTaskUpdation = (task, taskId) => {
 		let data = this.state.data;
     data[data.findIndex((obj => obj.id === taskId))].task = task;
 		this.setState({data : data});
 	}
 
-  handleSubmit(task) {
+  handleSubmit = (task) => {
 		let data = this.state.data;
 		let id = data[data.length - 1].id + 1;
 		data = data.concat([{id, task}]);
@@ -42,8 +39,10 @@ class TODOApp extends React.Component {
         <div className="row">
           <div className="col-md-8 col-md-offset-2">
             <AppHead />
-            <TODOAddForm onTaskSubmit = {this.handleSubmit}/>
-            <TODOList tasks={this.state.data} updateTask={this.handleTaskUpdation} removeTask={this.handleTaskRemoval} />
+            <TODOAddForm onTaskSubmit = {this.handleSubmit}
+            />
+            <TODOList tasks={this.state.data} updateTask={this.handleTaskUpdation} removeTask={this.handleTaskRemoval}
+            />
           </div>
         </div>
       </div>
