@@ -1,7 +1,7 @@
 import React from 'react';
 import ListItems from './ListItems';
 
-function TODOList(props){
+export default function TODOList(props) {
   const taskRows = props.tasks.map((task) => {
     return (
       <ListItems task={task.task} taskId={task.id} removeTasko={props.removeTask} updateTask={props.updateTask} key={task.id} />
@@ -15,7 +15,6 @@ function TODOList(props){
   );
 }
 
-export default TODOList;
 
 // For future reference
 //
