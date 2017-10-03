@@ -36,10 +36,10 @@ const todos = (state = [], action) => {
 export default todos
 
 
-handleTaskRemoval = (taskId) => {
-  let data = this.state.data;
-  data = data.filter(function (e) {
-    return e.id !== taskId;
-  });
-  this.setState({data : data});
-}
+// handleTaskRemoval = (taskId) => {
+//   let data = this.state.data;
+//   data = data.filter(function (e) {
+//     return e.id !== taskId;
+//   });
+//   this.setState({data : data});
+// }
