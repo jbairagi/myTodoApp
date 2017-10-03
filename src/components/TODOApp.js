@@ -1,6 +1,6 @@
 import React from 'react';
 import TODOAddForm from './../containers/TODOAddForm';
-import TODOList from './TODOList';
+import ShowTodoList from './../containers/ShowTodoList';
 import AppHead from './AppHead';
 import './../App.css';
 
@@ -10,7 +10,7 @@ const TODOApp = () => (
       <div className="col-md-8 col-md-offset-2">
         <AppHead />
         <TODOAddForm />
-        <TODOList />
+        <ShowTodoList />
       </div>
     </div>
   </div>
