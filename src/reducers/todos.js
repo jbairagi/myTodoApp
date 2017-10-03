@@ -12,7 +12,7 @@ const todos = (state = [], action) => {
     case 'UPDATE_TODO':
     return state.map(todo =>
       (todo.id === action.todo.id)
-        ? {...todo, task: action.todo.text}
+        ? {...todo, text: action.todo.text}
         : todo
     )
 
@@ -22,24 +22,9 @@ const todos = (state = [], action) => {
       });
       return state
 
-      // return state.map(todo =>
-      //   (todo.id === action.id)
-      //     ? {...todo, completed: !todo.completed}
-      //     : todo
-      // )
-
     default:
       return state
   }
 }
 
 export default todos
-
-
-// handleTaskRemoval = (taskId) => {
-//   let data = this.state.data;
-//   data = data.filter(function (e) {
-//     return e.id !== taskId;
-//   });
-//   this.setState({data : data});
-// }
