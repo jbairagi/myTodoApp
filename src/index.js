@@ -1,12 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import TODOApp from './TODOApp';
-import registerServiceWorker from './registerServiceWorker';
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import todoApp from './reducers'
+import TODOApp from './components/TODOApp'
 
-let TASKS = [
-  {id: 1, task: 'learn React'},
-  {id: 2, task: 'apply React'}
-];
+let store = createStore(todoApp, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
 
-ReactDOM.render(<TODOApp tasks={TASKS} />, document.getElementById('root'));
-registerServiceWorker();
+render(
+  <Provider store={store}>
+    <TODOApp />
+  </Provider>,
+  document.getElementById('root')
+)
