@@ -1,8 +1,10 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {deleteTodo, updateTodo} from './../actions';
 
 class ListItems extends React.Component{
   removeTask = (e) => {
-    this.props.removeTasko(this.props.taskId);
+    this.props.onDelete(this.props.taskId);
     e.preventDefault();
   }
 
@@ -10,7 +12,10 @@ class ListItems extends React.Component{
     if(this.todoUpdate.value === '')
       e.preventDefault();
     else {
-      this.props.updateTask(this.todoUpdate.value, this.props.taskId);
+      this.props.onUpdate({
+        text: this.todoUpdate.value,
+        id: this.props.taskId
+      });
       e.preventDefault();
     }
   }
@@ -46,4 +51,18 @@ class ListItems extends React.Component{
   }
 }
 
-export default ListItems;
+const mapDispatchToProps = dispatch => {
+  return {
+    onDelete: id => {
+      dispatch(deleteTodo(id))
+    },
+    onUpdate: todo => {
+      dispatch(updateTodo(todo))
+    }
+  }
+}
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(ListItems);

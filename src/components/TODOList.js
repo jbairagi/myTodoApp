@@ -1,16 +1,22 @@
 import React from 'react';
 import ListItems from './ListItems';
+import {connect} from 'react-redux';
 
-export default function TODOList(props) {
-  const taskRows = props.tasks.map((task) => {
-    return (
-      <ListItems task={task.task} taskId={task.id} removeTasko={props.removeTask} updateTask={props.updateTask} key={task.id} />
-    );
-  },this);
-
+const TODOList = ({todos}) => {
+  console.log(todos);
   return (
     <ul className="list-group">
-      {taskRows}
+      {
+        todos.map(task => <ListItems task={task.text} taskId={task.id} key={task.id} />)
+      }
     </ul>
   );
 }
+
+const mapStateToProps = state => {
+  return {
+    todos: state.todos
+  }
+}
+
+export default connect(mapStateToProps)(TODOList);
