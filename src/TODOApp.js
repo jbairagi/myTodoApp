@@ -3,12 +3,7 @@ import TODOAddForm from './TODOAddForm';
 import TODOList from './TODOList';
 import AppHead from './AppHead';
 import './App.css';
-
-var generator = () => {
-  return Math.floor((1 + Math.random()) * 0x10000)
-  .toString(16)
-  .substring(1);
-}
+import generator from './utility/generator';
 
 class TODOApp extends React.Component {
   constructor(props){
