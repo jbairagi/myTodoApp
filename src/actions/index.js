@@ -1,8 +1,9 @@
-let nextTodoId = 0
+import generator from './../utility/generator';
+
 export const addTodo = text => {
   return {
     type: 'ADD_TODO',
-    id: nextTodoId++,
+    id: generator(),
     text
   }
 }
