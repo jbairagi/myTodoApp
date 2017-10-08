@@ -17,3 +17,7 @@
 .add-space {
   margin-top: 5px;
 }
+
+.modal {
+  display:block;
+}
