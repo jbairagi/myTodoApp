@@ -6,8 +6,9 @@ import {request} from './../helpers/fetchHelpers';
 
 class TODOList extends React.Component{
   componentDidMount(){
-    const body = 'username='+this.props.user
-    request('projects', 'post', body).then(tasks => {
+    const body = 'token='+ window.localStorage.getItem('token');
+    request('projects', 'post', body)
+    .then(tasks => {
       tasks.forEach(function(element) {
         this.props.dispatch(addTodo(element.title))
       }, this);

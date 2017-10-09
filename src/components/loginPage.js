@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {setLoginStatus, setUser} from '../actions';
+import {request} from './../helpers/fetchHelpers';
 
 class loginPage extends React.Component{
   
@@ -17,9 +18,16 @@ class loginPage extends React.Component{
               if (!uname.value.trim() || !pass.value.trim()) {
                 return
               }
-              const status = true;
-              this.props.dispatch(setUser(uname.value))
-              this.props.dispatch(setLoginStatus(status))
+              const body = 'username='+uname.value+'&password='+pass.value
+              request('login', 'post', body)
+              .then( (result) => {
+                window.localStorage.setItem('token', result);
+                this.props.dispatch(setUser(uname.value))
+                this.props.dispatch(setLoginStatus(true))
+              })
+              .catch( (error) => {  
+                console.log(error);  
+              });
             }}
           >
             <div className="form-group">
