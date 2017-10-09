@@ -12,6 +12,7 @@ class logoutPage extends React.Component{
           <form className="form-horizontal"  
             onSubmit={e => {
               e.preventDefault()
+              window.localStorage.removeItem('token');
               this.props.dispatch(setUser(undefined))
               this.props.dispatch(setLoginStatus(false))
               this.props.dispatch(clearList())
