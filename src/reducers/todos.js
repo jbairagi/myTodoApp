@@ -21,6 +21,10 @@ const todos = (state = [], action) => {
         return e.id !== action.id;
       });
       return state
+    
+    case 'CLEAR_LIST':
+      state=[];
+      return state
 
     default:
       return state

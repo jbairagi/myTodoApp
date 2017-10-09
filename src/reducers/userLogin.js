@@ -1,14 +1,22 @@
-const login = (state = [], action) => {
+const initialStateUser = {isLoggedIn: false, user: undefined}
+
+const userLogin = (state = initialStateUser, action) => {
     switch (action.type) {
-      case 'ADD_TODO':
-        return [
+      case 'SET_LOGIN_STATUS':
+        return {
           ...state,
-          {
-            id: action.id,
-            text: action.text
-          }
-        ]
+          isLoggedIn: action.isLoggedIn
+        }
+      
+      case 'SET_USER':
+        return {
+          ...state,
+          user: action.user
+        }
+
+      default:
+        return state
     }
   }
   
-  export default todos
+  export default userLogin

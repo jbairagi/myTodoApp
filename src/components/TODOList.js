@@ -6,7 +6,8 @@ import {request} from './../helpers/fetchHelpers';
 
 class TODOList extends React.Component{
   componentDidMount(){
-    request('projects', 'post', 'username=cvbnm&password=cvbnm').then(tasks => {
+    const body = 'username='+this.props.user
+    request('projects', 'post', body).then(tasks => {
       tasks.forEach(function(element) {
         this.props.dispatch(addTodo(element.title))
       }, this);
@@ -29,7 +30,8 @@ class TODOList extends React.Component{
 
 const mapStateToProps = state => {
   return {
-    todos: state.todos
+    todos: state.todos,
+    user: state.userLogin.user
   }
 }
   

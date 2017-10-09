@@ -1,5 +1,6 @@
 import React from 'react';
-import TODOApp from './../components/TODOApp';
+import {connect} from 'react-redux';
+import {setLoginStatus, setUser} from '../actions';
 
 class loginPage extends React.Component{
   
@@ -16,7 +17,9 @@ class loginPage extends React.Component{
               if (!uname.value.trim() || !pass.value.trim()) {
                 return
               }
-              console.log(uname.value + ' ' + pass.value);
+              const status = true;
+              this.props.dispatch(setUser(uname.value))
+              this.props.dispatch(setLoginStatus(status))
             }}
           >
             <div className="form-group">
@@ -43,4 +46,5 @@ class loginPage extends React.Component{
     );
   }
 }
-export default loginPage;
+
+export default connect()(loginPage);

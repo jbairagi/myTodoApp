@@ -21,3 +21,24 @@ export const deleteTodo = id => {
     id
   }
 }
+
+export const clearList = id => {
+  return {
+    type: 'CLEAR_LIST'
+  }
+}
+
+
+export const setLoginStatus = isLoggedIn => {
+  return {
+    type: 'SET_LOGIN_STATUS',
+    isLoggedIn
+  }
+}
+
+export const setUser = user => {
+  return {
+    type: 'SET_USER',
+    user
+  }
+}
