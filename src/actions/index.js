@@ -8,6 +8,14 @@ export const addTodo = title => {
   }
 }
 
+export const getAllProjects = title => {
+  return {
+    type: 'GET_ALL_PROJECTS',
+    id: generator(),
+    title
+  }
+}
+
 export const updateTodo = todo => {
   return {
     type: 'UPDATE_TODO',

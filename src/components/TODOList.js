@@ -22,10 +22,12 @@ class TODOList extends React.Component{
       <ul className="list-group">
         {
           this.props.todos.map(task => 
-            <li className='list-group-item clearfix add-space'>
+            <li className='list-group-item clearfix add-space' key={task.id}>
 			        Project: {task.title}
 			      </li>
           )
+
+          
         }
       </ul>
     );
@@ -34,7 +36,7 @@ class TODOList extends React.Component{
 
 const mapStateToProps = state => {
   return {
-    todos: state.todos,
+    todos: state.todos.userProjects,
     user: state.userLogin.user
   }
 }
