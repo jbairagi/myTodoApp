@@ -25,7 +25,7 @@ class ListItems extends React.Component{
     const href = "#"+id;
     return (
       <li className='list-group-item clearfix add-space'>
-			  Task: {this.props.task}
+			  Project: {this.props.task.title}
         {this.props.isRoleManager &&
         <p>
           <button type="button" className="btn btn-danger add-space" onClick={this.removeTask}>Delete</button> {' '}

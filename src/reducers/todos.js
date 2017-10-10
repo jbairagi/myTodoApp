@@ -5,7 +5,7 @@ const todos = (state = [], action) => {
         ...state,
         {
           id: action.id,
-          text: action.text
+          title: action.title
         }
       ]
 
@@ -22,7 +22,7 @@ const todos = (state = [], action) => {
       });
       return state
     
-    case 'CLEAR_LIST':
+    case 'CLEAR_STORE':
       state=[];
       return state
 

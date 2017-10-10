@@ -6,8 +6,8 @@ import {request} from './../helpers/fetchHelpers';
 
 class TODOList extends React.Component{
   componentDidMount(){
-    const body = 'token='+ window.localStorage.getItem('token');
-    request('projects', 'post', body)
+    const token = window.localStorage.getItem('token')
+    request('projects', 'post', null, token )
     .then(tasks => {
       tasks.forEach(function(element) {
         this.props.dispatch(addTodo(element.title))
@@ -22,7 +22,7 @@ class TODOList extends React.Component{
     return (
       <ul className="list-group">
         {
-          this.props.todos.map(task => <ListItems task={task.text} taskId={task.id} key={task.id} />)
+          this.props.todos.map(task => <ListItems task={task} taskId={task.id} key={task.id} />)
         }
       </ul>
     );

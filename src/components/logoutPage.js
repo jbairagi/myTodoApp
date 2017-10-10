@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {setLoginStatus, setUser, clearList} from '../actions';
+import {setLoginStatus, setUser, clearStore} from '../actions';
 
 class logoutPage extends React.Component{
   
@@ -15,7 +15,7 @@ class logoutPage extends React.Component{
               window.localStorage.removeItem('token');
               this.props.dispatch(setUser(undefined))
               this.props.dispatch(setLoginStatus(false))
-              this.props.dispatch(clearList())
+              this.props.dispatch(clearStore())
             }}
           >
             <div className="form-group"> 

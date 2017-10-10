@@ -19,6 +19,10 @@ const userLogin = (state = initialStateUser, action) => {
           ...state,
           isRoleManager: action.isRoleManager
         }
+      
+      case 'CLEAR_STORE':
+        state=[];
+        return state
 
       default:
         return state

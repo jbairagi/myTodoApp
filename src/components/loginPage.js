@@ -18,11 +18,13 @@ class loginPage extends React.Component{
               if (!uname.value.trim() || !pass.value.trim()) {
                 return
               }
-              const body = 'username='+uname.value+'&password='+pass.value
+              const username = uname.value
+              const body = 'username='+username+'&password='+pass.value
               request('login', 'post', body)
               .then( (result) => {
                 window.localStorage.setItem('token', result.token);
-                this.props.dispatch(setUser(uname.value))
+                console.log(uname.value)
+                this.props.dispatch(setUser(username))
                 this.props.dispatch(setLoginStatus(result.token !== undefined))
                 this.props.dispatch(setUserRole(result.role === 'manager'))
               })

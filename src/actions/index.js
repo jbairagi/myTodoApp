@@ -1,10 +1,10 @@
 import generator from './../utility/generator';
 
-export const addTodo = text => {
+export const addTodo = title => {
   return {
     type: 'ADD_TODO',
     id: generator(),
-    text
+    title
   }
 }
 
@@ -22,9 +22,9 @@ export const deleteTodo = id => {
   }
 }
 
-export const clearList = id => {
+export const clearStore = () => {
   return {
-    type: 'CLEAR_LIST'
+    type: 'CLEAR_STORE'
   }
 }
 
