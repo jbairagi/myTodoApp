@@ -13,6 +13,12 @@ const userLogin = (state = initialStateUser, action) => {
           ...state,
           user: action.user
         }
+      
+      case 'SET_USER_ROLE':
+        return {
+          ...state,
+          isRoleManager: action.isRoleManager
+        }
 
       default:
         return state

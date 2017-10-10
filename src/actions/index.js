@@ -42,3 +42,10 @@ export const setUser = user => {
     user
   }
 }
+
+export const setUserRole = isRoleManager => {
+  return {
+    type: 'SET_USER_ROLE',
+    isRoleManager
+  }
+}

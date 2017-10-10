@@ -26,12 +26,13 @@ class ListItems extends React.Component{
     return (
       <li className='list-group-item clearfix add-space'>
 			  Task: {this.props.task}
+        {this.props.isRoleManager &&
         <p>
           <button type="button" className="btn btn-danger add-space" onClick={this.removeTask}>Delete</button> {' '}
           <a className="btn btn-primary add-space" data-toggle="collapse" href= {href} aria-expanded="false" aria-controls="collapseExample">
             Update
           </a>
-        </p>
+        </p>}
         <div className="collapse" id={id}>
           <div className="card card-body">
             <div className="row">
@@ -51,6 +52,12 @@ class ListItems extends React.Component{
   }
 }
 
+const mapStateToProps = state => {
+  return {
+     isRoleManager: state.userLogin.isRoleManager
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     onDelete: id => {
@@ -63,6 +70,6 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(ListItems);
