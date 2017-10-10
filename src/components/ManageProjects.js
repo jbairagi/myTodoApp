@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {deleteTodo, updateTodo} from './../actions';
 
-class ListItems extends React.Component{
+class ManageProjects extends React.Component{
   removeTask = (e) => {
     this.props.onDelete(this.props.taskId);
     e.preventDefault();
@@ -72,4 +72,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ListItems);
+)(ManageProjects);

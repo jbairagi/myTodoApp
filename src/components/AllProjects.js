@@ -1,9 +1,10 @@
 import React from 'react';
+import ManageProjects from './ManageProjects';
 import {connect} from 'react-redux';
 import {addTodo} from '../actions';
 import {request} from './../helpers/fetchHelpers';
 
-class TODOList extends React.Component{
+class AllProjects extends React.Component{
   componentDidMount(){
     const token = window.localStorage.getItem('token')
     request('projects', 'post', null, token )
@@ -21,11 +22,7 @@ class TODOList extends React.Component{
     return (
       <ul className="list-group">
         {
-          this.props.todos.map(task => 
-            <li className='list-group-item clearfix add-space'>
-			        Project: {task.title}
-			      </li>
-          )
+          this.props.todos.map(task => <ManageProjects task={task} taskId={task.id} key={task.id} />)
         }
       </ul>
     );
@@ -39,4 +36,4 @@ const mapStateToProps = state => {
   }
 }
   
-export default connect(mapStateToProps)(TODOList);
+export default connect(mapStateToProps)(AllProjects);
