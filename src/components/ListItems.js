@@ -13,7 +13,7 @@ class ListItems extends React.Component{
       e.preventDefault();
     else {
       this.props.onUpdate({
-        text: this.todoUpdate.value,
+        title: this.todoUpdate.value,
         id: this.props.taskId
       });
       e.preventDefault();

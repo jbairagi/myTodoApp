@@ -10,11 +10,11 @@ const todos = (state = [], action) => {
       ]
 
     case 'UPDATE_TODO':
-    return state.map(todo =>
-      (todo.id === action.todo.id)
-        ? {...todo, text: action.todo.text}
-        : todo
-    )
+      return state.map(todo =>
+        (todo.id === action.todo.id)
+          ? {...todo, title: action.todo.title}
+          : todo
+      )
 
     case 'DELETE_TODO':
       state = state.filter(function (e) {
