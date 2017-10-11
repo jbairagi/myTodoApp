@@ -1,18 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {request} from './../helpers/fetchHelpers';
-import {deleteTodo, updateTodo} from './../actions';
+import {deleteProject, updateProjectDescription, updateBeginningDate, updateDueDate} from './../actions';
 
 class ManageProjects extends React.Component{
-  removeTask = (e) => {
-
+  removeProject = (e) => {
     const token= window.localStorage.getItem('token') 
     const body = "title=" + this.props.task.title
     request('removeProject', 'post', body, token)
     .then( (result) => {
-
-      console.log(result);
-
       this.props.onDelete(this.props.taskId);
     })
     .catch( (error) => {
@@ -21,13 +17,63 @@ class ManageProjects extends React.Component{
     e.preventDefault();
   }
 
-  updateTask = (e) => {
-    if(this.todoUpdate.value === '')
+  editProjectDescription = (e) => {
+    if(this.editedDescription.value === '')
       e.preventDefault();
     else {
-      this.props.onUpdate({
-        title: this.todoUpdate.value,
-        id: this.props.taskId
+      const token= window.localStorage.getItem('token') 
+      const body = "title=" + this.props.task.title + "&description=" + this.editedDescription.value
+      request('editProjectDescription', 'post', body, token)
+      .then( (result) => {
+        this.props.onDescriptionUpdate({
+          description: this.editedDescription.value,
+          id: this.props.taskId
+        });
+      })
+      .catch( (error) => {
+        console.log(error);  
+      });
+      e.preventDefault();
+    }
+  }
+
+  editBeginningDate = (e) => {
+    if(this.editedBeginningDate.value === '')
+      e.preventDefault();
+    else {
+      const token= window.localStorage.getItem('token') 
+      const body = "title=" + this.props.task.title + "&beginningDate=" + this.editedBeginningDate.value
+      request('editProjectBeginningDate', 'post', body, token)
+      .then( (result) => {
+        console.log(result)
+        this.props.onBeginningDateUpdate({
+          beginningDate: this.editedBeginningDate.value,
+          id: this.props.taskId
+        });
+      })
+      .catch( (error) => {
+        console.log(error);  
+      });
+      e.preventDefault();
+    }
+  }
+
+  editDueDate = (e) => {
+    if(this.editedDueDate.value === '')
+      e.preventDefault();
+    else {
+      const token= window.localStorage.getItem('token') 
+      const body = "title=" + this.props.task.title + "&dueDate=" + this.editedDueDate.value
+      request('editProjectDueDate', 'post', body, token)
+      .then( (result) => {
+        console.log(result)
+        this.props.onDueDateUpdate({
+          dueDate: this.editedDueDate.value,
+          id: this.props.taskId
+        });
+      })
+      .catch( (error) => {
+        console.log(error);  
       });
       e.preventDefault();
     }
@@ -41,7 +87,7 @@ class ManageProjects extends React.Component{
 			  Project: {this.props.task.title}
         {this.props.isRoleManager &&
         <p>
-          <button type="button" className="btn btn-danger add-space" onClick={this.removeTask}>Delete</button> {' '}
+          <button type="button" className="btn btn-danger add-space" onClick={this.removeProject}>Delete</button> {' '}
           <a className="btn btn-primary add-space" data-toggle="collapse" href= {href} aria-expanded="false" aria-controls="collapseExample">
             Update
           </a>
@@ -50,10 +96,22 @@ class ManageProjects extends React.Component{
           <div className="card card-body">
             <div className="row">
               <div className="col-xs-12">
-                <div className="input-group input-group-lg">
-                  <input type="text" className="form-control add-space" required ref={(input) => this.todoUpdate = input} placeholder="Update the task here" />
+                <div className="input-group input-group-sm">
+                  <input type="text" className="form-control add-space" required ref={(input) => this.editedDescription = input} placeholder="Description" />
                   <div className="input-group-btn">
-                    <button type="button" className="btn btn-info add-space" data-toggle="collapse" href= {href} aria-expanded="false" aria-controls="collapseExample" onClick={this.updateTask}>&#x2713;</button>
+                    <button type="button" className="btn btn-info btn-width add-space" data-toggle="collapse" href= {href} aria-expanded="false" aria-controls="collapseExample" onClick={this.editProjectDescription}>Edit Description</button>
+                  </div>
+                </div>
+                <div className="input-group input-group-sm">
+                  <input type="date" className="form-control add-space" required ref={(input) => this.editedBeginningDate = input} placeholder="Beginning Date" />
+                  <div className="input-group-btn">
+                    <button type="button" className="btn btn-info btn-width add-space" data-toggle="collapse" href= {href} aria-expanded="false" aria-controls="collapseExample" onClick={this.editBeginningDate}>Beginning Date</button>
+                  </div>
+                </div>
+                <div className="input-group input-group-sm">
+                  <input type="date" className="form-control add-space" required ref={(input) => this.editedDueDate = input} placeholder="Due Date" />
+                  <div className="input-group-btn">
+                    <button type="button" className="btn btn-info btn-width add-space" data-toggle="collapse" href= {href} aria-expanded="false" aria-controls="collapseExample" onClick={this.editDueDate}>Due Date</button>
                   </div>
                 </div>
               </div>
@@ -74,10 +132,16 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onDelete: id => {
-      dispatch(deleteTodo(id))
+      dispatch(deleteProject(id))
     },
-    onUpdate: todo => {
-      dispatch(updateTodo(todo))
+    onDescriptionUpdate: todo => {
+      dispatch(updateProjectDescription(todo))
+    },
+    onBeginningDateUpdate: todo => {
+      dispatch(updateBeginningDate(todo))
+    },
+    onDueDateUpdate: todo => {
+      dispatch(updateDueDate(todo))
     }
   }
 }

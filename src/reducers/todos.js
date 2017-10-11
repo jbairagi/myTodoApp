@@ -12,7 +12,10 @@ const todos = (state = initialStateUser, action) => {
           ...state.userProjects,
           {
             id: action.id,
-            title: action.title
+            title: action.title,
+            description: action.description,
+            beginningDate: action.beginningDate,
+            dueDate: action.dueDate
           }
         ]
       };
@@ -25,21 +28,24 @@ const todos = (state = initialStateUser, action) => {
           ...state.allProjects,
           {
             id: action.id,
-            title: action.title
+            title: action.title,
+            description: action.description,
+            beginningDate: action.beginningDate,
+            dueDate: action.dueDate
           }
         ]
       };
       return allProjects;
 
-    case 'UPDATE_TODO':
+    case 'UPDATE_DESCRIPTION':
       const allProjectsArrayU = state.allProjects.map(todo =>
         (todo.id === action.todo.id)
-        ? {...todo, title: action.todo.title}
+        ? {...todo, description: action.todo.description}
         : todo)
       
       const userProjectsArrayU = state.userProjects.map(todo =>
         (todo.id === action.todo.id)
-        ? {...todo, title: action.todo.title}
+        ? {...todo, description: action.todo.description}
         : todo)
 
       const finalStateU = {
@@ -48,9 +54,45 @@ const todos = (state = initialStateUser, action) => {
         userProjects: userProjectsArrayU
       }
       return finalStateU
+
+    case 'UPDATE_BEGINNING_DATE':
+      const allProjectsArrayB = state.allProjects.map(todo =>
+        (todo.id === action.todo.id)
+        ? {...todo, beginningDate: action.todo.beginningDate}
+        : todo)
+      
+      const userProjectsArrayB = state.userProjects.map(todo =>
+        (todo.id === action.todo.id)
+        ? {...todo, beginningDate: action.todo.beginningDate}
+        : todo)
+
+      const finalStateB = {
+        ...state,
+        allProjects: allProjectsArrayB,
+        userProjects: userProjectsArrayB
+      }
+      return finalStateB
+
+    case 'UPDATE_DUE_DATE':
+      const allProjectsArrayDD = state.allProjects.map(todo =>
+        (todo.id === action.todo.id)
+        ? {...todo, dueDate: action.todo.dueDate}
+        : todo)
+      
+      const userProjectsArrayDD = state.userProjects.map(todo =>
+        (todo.id === action.todo.id)
+        ? {...todo, dueDate: action.todo.dueDate}
+        : todo)
+
+      const finalStateDD = {
+        ...state,
+        allProjects: allProjectsArrayDD,
+        userProjects: userProjectsArrayDD
+      }
+      return finalStateDD
       
 
-    case 'DELETE_TODO':
+    case 'DELETE_PROJECT':
       const allProjectsArrayD = state.allProjects.filter(function (e) {
         return e.id !== action.id;
       });
