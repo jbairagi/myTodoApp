@@ -1,18 +1,16 @@
-import generator from './../utility/generator';
-
-export const addTodo = title => {
+export const addTodo = project => {
   return {
     type: 'ADD_TODO',
-    id: generator(),
-    title
+    id: project._id,
+    title: project.title
   }
 }
 
-export const getAllProjects = title => {
+export const getAllProjects = project => {
   return {
     type: 'GET_ALL_PROJECTS',
-    id: generator(),
-    title
+    id: project._id,
+    title: project.title
   }
 }
 
