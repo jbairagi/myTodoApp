@@ -1,10 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux'
-// import { addTodo } from '../actions'
+import {connect} from 'react-redux'
+import {addTodo, getAllProjects} from '../actions'
 import {request} from './../helpers/fetchHelpers';
 import './../App.css';
 
-const TODOAddForm = ({dispatch}) => {
+const TODOAddForm = ({dispatch, user}) => {
   let title, description, beginningDate, dueDate, developer
   return(
     <div>
@@ -14,19 +14,17 @@ const TODOAddForm = ({dispatch}) => {
           if (!title.value.trim() || !description.value.trim() || !beginningDate.value.trim() || !dueDate.value.trim() || !developer.value.trim()) {
             return
           }
-          const token= window.localStorage.getItem('token') 
+          const token= window.localStorage.getItem('token')
+          const assignedDeveloper = developer.value
           const body = 'title='+title.value + '&description=' + description.value + '&beginningDate=' + beginningDate.value + '&dueDate='+ dueDate.value + '&developer=' + developer.value
           request('addProjects', 'post', body, token)
           .then( (result) => {
-
-            console.log(result);
-            // dispatch(addTodo(result.title))
-            
+            if (user === assignedDeveloper) dispatch(addTodo(result));
+            dispatch(getAllProjects(result))
           })
           .catch( (error) => {  
             console.log(error);  
           });
-        
           title.value = ''
           description.value = ''
           beginningDate.value = ''
@@ -61,4 +59,10 @@ const TODOAddForm = ({dispatch}) => {
   );
 }
 
-export default connect()(TODOAddForm);
+const mapStateToProps = state => {
+  return {
+     user: state.userLogin.user
+  }
+}
+
+export default connect(mapStateToProps)(TODOAddForm);

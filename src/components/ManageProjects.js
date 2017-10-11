@@ -1,10 +1,23 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {request} from './../helpers/fetchHelpers';
 import {deleteTodo, updateTodo} from './../actions';
 
 class ManageProjects extends React.Component{
   removeTask = (e) => {
-    this.props.onDelete(this.props.taskId);
+
+    const token= window.localStorage.getItem('token') 
+    const body = "title=" + this.props.task.title
+    request('removeProject', 'post', body, token)
+    .then( (result) => {
+
+      console.log(result);
+
+      this.props.onDelete(this.props.taskId);
+    })
+    .catch( (error) => {
+      console.log(error);  
+    });     
     e.preventDefault();
   }
 
