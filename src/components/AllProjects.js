@@ -9,8 +9,8 @@ class AllProjects extends React.Component{
     const token = window.localStorage.getItem('token')
     request('projects', 'post', null, token )
     .then(tasks => {
-      tasks.forEach(function(element) {
-        this.props.dispatch(getAllProjects(element.title))
+      tasks.allProjects.forEach(function(project) {
+        this.props.dispatch(getAllProjects(project))
       }, this);
     })
     .catch(function (error) {  
@@ -19,7 +19,6 @@ class AllProjects extends React.Component{
   }
 
   render(){
-    console.log(this.props.todos)
     return (
       <ul className="list-group">
         {
@@ -31,10 +30,6 @@ class AllProjects extends React.Component{
 }
 
 const mapStateToProps = state => {
-
-  console.log('===============');
-  console.log(state);
-  
   return {
 
     todos: state.todos.allProjects,

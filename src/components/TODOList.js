@@ -8,8 +8,8 @@ class TODOList extends React.Component{
     const token = window.localStorage.getItem('token')
     request('projects', 'post', null, token )
     .then(tasks => {
-      tasks.forEach(function(element) {
-        this.props.dispatch(addTodo(element.title))
+      tasks.userProjects.forEach(function(project) {
+        this.props.dispatch(addTodo(project))
       }, this);
     })
     .catch(function (error) {  
@@ -26,8 +26,6 @@ class TODOList extends React.Component{
 			        Project: {task.title}
 			      </li>
           )
-
-          
         }
       </ul>
     );
