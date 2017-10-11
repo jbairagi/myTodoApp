@@ -32,25 +32,42 @@ const todos = (state = initialStateUser, action) => {
       return allProjects;
 
     case 'UPDATE_TODO':
-      console.log(state);
-      const temp = state.allProjects.map(todo =>
-                      (todo.id === action.todo.id)
-                      ? {...todo, title: action.todo.title}
-                      : todo)
-      console.log(">>>>>>>>>>>>>>>>>>>>>>")
-      console.log(temp);
-      return temp
+      const allProjectsArrayU = state.allProjects.map(todo =>
+        (todo.id === action.todo.id)
+        ? {...todo, title: action.todo.title}
+        : todo)
+      
+      const userProjectsArrayU = state.userProjects.map(todo =>
+        (todo.id === action.todo.id)
+        ? {...todo, title: action.todo.title}
+        : todo)
+
+      const finalStateU = {
+        ...state,
+        allProjects: allProjectsArrayU,
+        userProjects: userProjectsArrayU
+      }
+      return finalStateU
       
 
     case 'DELETE_TODO':
-      state = state.allProjects.filter(function (e) {
+      const allProjectsArrayD = state.allProjects.filter(function (e) {
         return e.id !== action.id;
       });
-      return state
-    
+
+      const userProjectsArrayD = state.userProjects.filter(function (e) {
+        return e.id !== action.id;
+      });
+
+      const finalStateD = {
+        ...state,
+        allProjects: allProjectsArrayD,
+        userProjects: userProjectsArrayD
+      }
+      return finalStateD
+
     case 'CLEAR_STORE':
-      state=null;
-      return state
+      return {allProjects:[], userProjects:[]}
 
     default:
       return state
