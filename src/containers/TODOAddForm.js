@@ -19,7 +19,7 @@ const TODOAddForm = ({dispatch}) => {
           request('addProjects', 'post', body, token)
           .then( (result) => {
 
-            
+            console.log(result);
             // dispatch(addTodo(result.title))
             
           })

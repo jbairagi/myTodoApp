@@ -23,7 +23,6 @@ class loginPage extends React.Component{
               request('login', 'post', body)
               .then( (result) => {
                 window.localStorage.setItem('token', result.token);
-                console.log(uname.value)
                 this.props.dispatch(setUser(username))
                 this.props.dispatch(setLoginStatus(result.token !== undefined))
                 this.props.dispatch(setUserRole(result.role === 'manager'))
