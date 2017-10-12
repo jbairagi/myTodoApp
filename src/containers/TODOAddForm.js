@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux'
 import {addTodo, getAllProjects} from '../actions'
 import {request} from './../helpers/fetchHelpers';
-import './../App.css';
 
 const TODOAddForm = ({dispatch, user}) => {
   let title, description, beginningDate, dueDate, developer
