@@ -23,7 +23,7 @@ class TODOList extends React.Component{
         {
           this.props.todos.map(task => 
             <li className='list-group-item clearfix add-space' key={task.id}>
-			        <h3>Project Title: {task.title}</h3>
+              <h3>Project Title: {task.title}</h3>
               <p>
                 Description: {task.description}
               </p>
@@ -33,7 +33,7 @@ class TODOList extends React.Component{
               <p>
                 Due Date: {task.dueDate}
               </p>
-			      </li>
+            </li>
           )
         }
       </ul>

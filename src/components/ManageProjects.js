@@ -118,7 +118,7 @@ class ManageProjects extends React.Component{
             </div>
           </div>
         </div>
-			</li>
+      </li>
     );
   }
 }
