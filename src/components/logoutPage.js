@@ -1,9 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {setLoginStatus, setUser, clearStore} from '../actions';
+import {clearStore} from '../actions';
 
 class logoutPage extends React.Component{
-  
   render(){
     return(
       <div className="container add-top-margin">
@@ -13,8 +12,6 @@ class logoutPage extends React.Component{
             onSubmit={e => {
               e.preventDefault()
               window.localStorage.removeItem('token');
-              this.props.dispatch(setUser(undefined))
-              this.props.dispatch(setLoginStatus(false))
               this.props.dispatch(clearStore())
             }}
           >
