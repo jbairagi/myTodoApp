@@ -1,5 +1,4 @@
 import React from 'react';
-import './../App.css';
 
 const AppHead = () => (
   <div className="app-header">
