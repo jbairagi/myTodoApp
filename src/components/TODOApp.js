@@ -9,8 +9,8 @@ import './../App.css';
 const TODOApp = ({isRoleManager}) => (
   <div className="container">
     <div className="row">
-      <div className="col-md-4">
-      {isRoleManager && <AllProjects />}
+      <div className="col-md-4 add-top-margin">
+        {isRoleManager && <AllProjects />}
       </div>
       <div className={isRoleManager ? "col-md-8" : "col-md-8 col-md-offset-2"}>
         <AppHead />
