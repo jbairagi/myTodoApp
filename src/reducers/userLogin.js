@@ -1,6 +1,17 @@
-const initialStateUser = {isLoggedIn: false, user: undefined}
+const token= window.localStorage.getItem('token')
+var jwtDecode = require('jwt-decode');
 
-const userLogin = (state = initialStateUser, action) => {
+const initialStateUser = () => {
+  if(token === null) return {isLoggedIn: false, user: undefined}
+  
+  else{
+    const isRoleManager = (jwtDecode(token).role === 'manager' ) ? true : false
+    const user = jwtDecode(token).name
+    return {isRoleManager: isRoleManager, isLoggedIn: true, user: user};
+  }
+}
+
+const userLogin = (state = initialStateUser(), action) => {
   switch (action.type) {
     case 'SET_LOGIN_STATUS':
       return {

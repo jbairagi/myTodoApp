@@ -18,6 +18,8 @@ export const request = (path, method, body = null, token = null) => {
 			return resolve(result);
 		})
 		.catch(function (error) {
+			console.log(error.status)
+			console.log(error.message);  
 			return reject("Request failed!", error);
 		});
 	})

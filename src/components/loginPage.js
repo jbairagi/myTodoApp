@@ -27,8 +27,9 @@ class loginPage extends React.Component{
                 this.props.dispatch(setLoginStatus(result.token !== undefined))
                 this.props.dispatch(setUserRole(result.role === 'manager'))
               })
-              .catch( (error) => {  
-                console.log(error);  
+              .catch( (error) => {
+                console.log(error.status)
+                console.log(error.message);  
               });
               uname.value = ''
               pass.value = ''
