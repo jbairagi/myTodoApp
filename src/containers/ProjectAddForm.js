@@ -1,9 +1,9 @@
 import React from 'react';
-import {connect} from 'react-redux'
-import {addTodo, getAllProjects} from '../actions'
-import {request} from './../helpers/fetchHelpers';
+import { connect}  from 'react-redux'
+import { addProject, getAllProjects } from '../actions'
+import { request } from './../helpers/fetchHelpers';
 
-const TODOAddForm = ({dispatch, user}) => {
+const ProjectAddForm = ({dispatch, user}) => {
   let title, description, beginningDate, dueDate, developer
   return(
     <div>
@@ -18,7 +18,7 @@ const TODOAddForm = ({dispatch, user}) => {
           const body = 'title='+title.value + '&description=' + description.value + '&beginningDate=' + beginningDate.value + '&dueDate='+ dueDate.value + '&developer=' + developer.value
           request('addProjects', 'post', body, token)
           .then( (result) => {
-            if (user === assignedDeveloper) dispatch(addTodo(result));
+            if (user === assignedDeveloper) dispatch(addProject(result));
             dispatch(getAllProjects(result))
           })
           .catch( (error) => {  
@@ -64,4 +64,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(TODOAddForm);
+export default connect(mapStateToProps)(ProjectAddForm);

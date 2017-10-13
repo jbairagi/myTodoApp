@@ -1,8 +1,8 @@
-export const addTodo = project => {
+export const addProject = project => {
   let beginningDate = new Date(project.beginningDate)
   let dueDate = new Date(project.dueDate)
   return {
-    type: 'ADD_TODO',
+    type: 'ADD_PROJECT',
     id: project._id,
     title: project.title,
     description: project.description,
@@ -24,24 +24,24 @@ export const getAllProjects = project => {
   }
 }
 
-export const updateProjectDescription = todo => {
+export const updateProjectDescription = Project => {
   return {
     type: 'UPDATE_DESCRIPTION',
-    todo
+    Project
   }
 }
 
-export const updateBeginningDate= todo => {
+export const updateBeginningDate= Project => {
   return {
     type: 'UPDATE_BEGINNING_DATE',
-    todo
+    Project
   }
 }
 
-export const updateDueDate = todo => {
+export const updateDueDate = Project => {
   return {
     type: 'UPDATE_DUE_DATE',
-    todo
+    Project
   }
 }
 

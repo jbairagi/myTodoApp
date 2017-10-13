@@ -1,15 +1,16 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {addTodo} from '../actions';
-import {request} from './../helpers/fetchHelpers';
+import { connect } from 'react-redux';
+import { addProject } from '../actions';
+import { request } from './../helpers/fetchHelpers';
 
-class TODOList extends React.Component{
+class PROJECTList extends React.Component{
   componentDidMount(){
     const token = window.localStorage.getItem('token')
     request('projects', 'post', null, token )
     .then(tasks => {
+      console.log(tasks)
       tasks.userProjects.forEach(function(project) {
-        this.props.dispatch(addTodo(project))
+        this.props.dispatch(addProject(project))
       }, this);
     })
     .catch(function (error) {  
@@ -21,7 +22,7 @@ class TODOList extends React.Component{
     return (
       <ul className="list-group">
         {
-          this.props.todos.map(task => 
+          this.props.projects.map(task => 
             <li className='list-group-item clearfix add-space' key={task.id}>
               <h3>Project Title: {task.title}</h3>
               <p>
@@ -42,10 +43,11 @@ class TODOList extends React.Component{
 }
 
 const mapStateToProps = state => {
+  console.log(state)
   return {
-    todos: state.todos.userProjects,
+    projects: state.projects.userProjects,
     user: state.userLogin.user
   }
 }
   
-export default connect(mapStateToProps)(TODOList);
+export default connect(mapStateToProps)(PROJECTList);

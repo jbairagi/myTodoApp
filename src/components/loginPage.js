@@ -1,8 +1,8 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { browserHistory, Link } from 'react-router'
-import {setLoginStatus, setUser, setUserRole} from '../actions';
-import {request} from './../helpers/fetchHelpers';
+import { setLoginStatus, setUser, setUserRole } from '../actions';
+import { request } from './../helpers/fetchHelpers';
 
 class loginPage extends React.Component{
   componentWillMount(){

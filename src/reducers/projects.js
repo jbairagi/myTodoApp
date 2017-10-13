@@ -3,7 +3,7 @@ const initialStateUser = {
   userProjects: []
 }
 
-const todos = (state = initialStateUser, action) => {
+const projects = (state = initialStateUser, action) => {
   switch (action.type) {
     case 'ADD_TODO':
       const userProjects = {
@@ -38,15 +38,15 @@ const todos = (state = initialStateUser, action) => {
       return allProjects;
 
     case 'UPDATE_DESCRIPTION':
-      const allProjectsArrayU = state.allProjects.map(todo =>
-        (todo.id === action.todo.id)
-        ? {...todo, description: action.todo.description}
-        : todo)
+      const allProjectsArrayU = state.allProjects.map(project =>
+        (project.id === action.project.id)
+        ? {...project, description: action.project.description}
+        : project)
       
-      const userProjectsArrayU = state.userProjects.map(todo =>
-        (todo.id === action.todo.id)
-        ? {...todo, description: action.todo.description}
-        : todo)
+      const userProjectsArrayU = state.userProjects.map(project =>
+        (project.id === action.project.id)
+        ? {...project, description: action.project.description}
+        : project)
 
       const finalStateU = {
         ...state,
@@ -56,15 +56,15 @@ const todos = (state = initialStateUser, action) => {
       return finalStateU
 
     case 'UPDATE_BEGINNING_DATE':
-      const allProjectsArrayB = state.allProjects.map(todo =>
-        (todo.id === action.todo.id)
-        ? {...todo, beginningDate: action.todo.beginningDate}
-        : todo)
+      const allProjectsArrayB = state.allProjects.map(project =>
+        (project.id === action.project.id)
+        ? {...project, beginningDate: action.project.beginningDate}
+        : project)
       
-      const userProjectsArrayB = state.userProjects.map(todo =>
-        (todo.id === action.todo.id)
-        ? {...todo, beginningDate: action.todo.beginningDate}
-        : todo)
+      const userProjectsArrayB = state.userProjects.map(project =>
+        (project.id === action.project.id)
+        ? {...project, beginningDate: action.project.beginningDate}
+        : project)
 
       const finalStateB = {
         ...state,
@@ -74,15 +74,15 @@ const todos = (state = initialStateUser, action) => {
       return finalStateB
 
     case 'UPDATE_DUE_DATE':
-      const allProjectsArrayDD = state.allProjects.map(todo =>
-        (todo.id === action.todo.id)
-        ? {...todo, dueDate: action.todo.dueDate}
-        : todo)
+      const allProjectsArrayDD = state.allProjects.map(project =>
+        (project.id === action.project.id)
+        ? {...project, dueDate: action.project.dueDate}
+        : project)
       
-      const userProjectsArrayDD = state.userProjects.map(todo =>
-        (todo.id === action.todo.id)
-        ? {...todo, dueDate: action.todo.dueDate}
-        : todo)
+      const userProjectsArrayDD = state.userProjects.map(project =>
+        (project.id === action.project.id)
+        ? {...project, dueDate: action.project.dueDate}
+        : project)
 
       const finalStateDD = {
         ...state,
@@ -116,4 +116,4 @@ const todos = (state = initialStateUser, action) => {
   }
 }
 
-export default todos
+export default projects

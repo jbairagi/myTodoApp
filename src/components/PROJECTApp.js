@@ -1,12 +1,11 @@
 import React from 'react';
-import TODOAddForm from './../containers/TODOAddForm';
-import TODOList from './TODOList';
+import { connect } from 'react-redux'
+import ProjectAddForm from './../containers/ProjectAddForm';
+import PROJECTList from './PROJECTList';
 import AllProjects from './AllProjects';
 import AppHead from './AppHead';
-import {connect} from 'react-redux'
-import './../App.css';
 
-const TODOApp = ({isRoleManager}) => (
+const PROJECTApp = ({isRoleManager}) => (
   <div className="container">
     <div className="row">
       <div className="col-md-4 add-top-margin">
@@ -14,8 +13,8 @@ const TODOApp = ({isRoleManager}) => (
       </div>
       <div className={isRoleManager ? "col-md-8" : "col-md-8 col-md-offset-2"}>
         <AppHead />
-        {isRoleManager && <TODOAddForm />}
-        <TODOList />
+        {isRoleManager && <ProjectAddForm />}
+        <PROJECTList />
       </div>
     </div>
   </div>
@@ -27,4 +26,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(TODOApp);
+export default connect(mapStateToProps)(PROJECTApp);

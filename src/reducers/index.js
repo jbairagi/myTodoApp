@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-import todos from './todos'
+import projects from './projects'
 import userLogin from './userLogin'
 
-const todoApp = combineReducers({
-  todos,
+const projectApp = combineReducers({
+  projects,
   userLogin
 })
 
-export default todoApp
+export default projectApp
