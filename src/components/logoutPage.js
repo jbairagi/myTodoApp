@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { browserHistory } from 'react-router'
 import {clearStore} from '../actions';
 
 class logoutPage extends React.Component{
@@ -12,6 +13,7 @@ class logoutPage extends React.Component{
             onSubmit={e => {
               e.preventDefault()
               window.localStorage.removeItem('token');
+              browserHistory.push('/');
               this.props.dispatch(clearStore())
             }}
           >

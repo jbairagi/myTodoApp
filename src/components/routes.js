@@ -1,16 +1,15 @@
 import React from 'react';
-import { Router, Route } from 'react-router'
+import { Router, Route, browserHistory } from 'react-router'
+import HomePage from './homePage';
+import Login from './loginPage';
+import Dashboard from './App';
+import NotFound from './NotFound';
 
-import App from './components/App';
-import Login from './components/loginPage';
-// import Profile from './components/';
-import NotFound from './components/NotFound';
-
-const Routes = (props) => (
-  <Router {...props}>
-    <Route path="/" component={App} />
-    <Route path="/login" component={Login} />
-    {/* <Route path="/profile" component={Profile} /> */}
+const Routes = () => (
+  <Router history={browserHistory}>
+    <Route path="/" component={HomePage} />
+    <Route path="login" component={Login} />
+    <Route path="dashboard" component={Dashboard} />
     <Route path="*" component={NotFound} />
   </Router>
 );

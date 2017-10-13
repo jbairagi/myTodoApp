@@ -1,12 +1,12 @@
 import React from 'react';
-import LoginPage from './loginPage'
+import { browserHistory } from 'react-router'
+import { connect } from 'react-redux'
 import LogoutPage from './logoutPage'
 import TODOApp from './TODOApp'
-import {connect} from 'react-redux'
 
 const App = ({isLoggedIn}) => (
   <div>
-    {!isLoggedIn && <LoginPage />}
+    {!isLoggedIn && browserHistory.push('/login') }
     {isLoggedIn && <LogoutPage />}
     {isLoggedIn && <TODOApp />}
   </div>
