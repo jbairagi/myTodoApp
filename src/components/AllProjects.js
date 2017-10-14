@@ -1,8 +1,8 @@
 import React from 'react';
 import ManageProjects from './ManageProjects';
-import {connect} from 'react-redux';
-import {getAllProjects} from '../actions';
-import {request} from './../helpers/fetchHelpers';
+import { connect } from 'react-redux';
+import { getAllProjects } from '../actions';
+import { request } from './../helpers/fetchHelpers';
 
 class AllProjects extends React.Component{
   componentDidMount(){
@@ -22,7 +22,7 @@ class AllProjects extends React.Component{
     return (
       <ul className="list-group">
         {
-          this.props.todos.map(task => <ManageProjects task={task} taskId={task.id} key={task.id} />)
+          this.props.projects.map(task => <ManageProjects task={task} taskId={task.id} key={task.id} />)
         }
       </ul>
     );
@@ -32,7 +32,7 @@ class AllProjects extends React.Component{
 const mapStateToProps = state => {
   return {
 
-    todos: state.todos.allProjects,
+    projects: state.projects.allProjects,
     user: state.userLogin.user
   }
 }

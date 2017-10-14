@@ -18,6 +18,7 @@ const ProjectAddForm = ({dispatch, user}) => {
           const body = 'title='+title.value + '&description=' + description.value + '&beginningDate=' + beginningDate.value + '&dueDate='+ dueDate.value + '&developer=' + developer.value
           request('addProjects', 'post', body, token)
           .then( (result) => {
+            console.log(result)
             if (user === assignedDeveloper) dispatch(addProject(result));
             dispatch(getAllProjects(result))
           })

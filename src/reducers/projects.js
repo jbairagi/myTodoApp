@@ -5,7 +5,7 @@ const initialStateUser = {
 
 const projects = (state = initialStateUser, action) => {
   switch (action.type) {
-    case 'ADD_TODO':
+    case 'ADD_PROJECT':
       const userProjects = {
         ...state,
         userProjects: [

@@ -8,7 +8,6 @@ class PROJECTList extends React.Component{
     const token = window.localStorage.getItem('token')
     request('projects', 'post', null, token )
     .then(tasks => {
-      console.log(tasks)
       tasks.userProjects.forEach(function(project) {
         this.props.dispatch(addProject(project))
       }, this);
@@ -43,7 +42,6 @@ class PROJECTList extends React.Component{
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     projects: state.projects.userProjects,
     user: state.userLogin.user

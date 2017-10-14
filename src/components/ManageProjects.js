@@ -134,14 +134,14 @@ const mapDispatchToProps = dispatch => {
     onDelete: id => {
       dispatch(deleteProject(id))
     },
-    onDescriptionUpdate: todo => {
-      dispatch(updateProjectDescription(todo))
+    onDescriptionUpdate: project => {
+      dispatch(updateProjectDescription(project))
     },
-    onBeginningDateUpdate: todo => {
-      dispatch(updateBeginningDate(todo))
+    onBeginningDateUpdate: project => {
+      dispatch(updateBeginningDate(project))
     },
-    onDueDateUpdate: todo => {
-      dispatch(updateDueDate(todo))
+    onDueDateUpdate: project => {
+      dispatch(updateDueDate(project))
     }
   }
 }
