@@ -39,13 +39,13 @@ const projects = (state = initialStateUser, action) => {
 
     case 'UPDATE_DESCRIPTION':
       const allProjectsArrayU = state.allProjects.map(project =>
-        (project.id === action.project.id)
-        ? {...project, description: action.project.description}
+        (project.id === action.Project.id)
+        ? {...project, description: action.Project.description}
         : project)
       
       const userProjectsArrayU = state.userProjects.map(project =>
-        (project.id === action.project.id)
-        ? {...project, description: action.project.description}
+        (project.id === action.Project.id)
+        ? {...project, description: action.Project.description}
         : project)
 
       const finalStateU = {
@@ -57,13 +57,13 @@ const projects = (state = initialStateUser, action) => {
 
     case 'UPDATE_BEGINNING_DATE':
       const allProjectsArrayB = state.allProjects.map(project =>
-        (project.id === action.project.id)
-        ? {...project, beginningDate: action.project.beginningDate}
+        (project.id === action.Project.id)
+        ? {...project, beginningDate: action.Project.beginningDate}
         : project)
       
       const userProjectsArrayB = state.userProjects.map(project =>
-        (project.id === action.project.id)
-        ? {...project, beginningDate: action.project.beginningDate}
+        (project.id === action.Project.id)
+        ? {...project, beginningDate: action.Project.beginningDate}
         : project)
 
       const finalStateB = {
@@ -75,13 +75,13 @@ const projects = (state = initialStateUser, action) => {
 
     case 'UPDATE_DUE_DATE':
       const allProjectsArrayDD = state.allProjects.map(project =>
-        (project.id === action.project.id)
-        ? {...project, dueDate: action.project.dueDate}
+        (project.id === action.Project.id)
+        ? {...project, dueDate: action.Project.dueDate}
         : project)
       
       const userProjectsArrayDD = state.userProjects.map(project =>
-        (project.id === action.project.id)
-        ? {...project, dueDate: action.project.dueDate}
+        (project.id === action.Project.id)
+        ? {...project, dueDate: action.Project.dueDate}
         : project)
 
       const finalStateDD = {

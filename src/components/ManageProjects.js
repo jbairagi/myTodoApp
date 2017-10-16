@@ -29,6 +29,7 @@ class ManageProjects extends React.Component{
           description: this.editedDescription.value,
           id: this.props.taskId
         });
+        this.editedDescription.value = ''
       })
       .catch( (error) => {
         console.log(error);  
@@ -45,11 +46,11 @@ class ManageProjects extends React.Component{
       const body = "title=" + this.props.task.title + "&beginningDate=" + this.editedBeginningDate.value
       request('editProjectBeginningDate', 'post', body, token)
       .then( (result) => {
-        console.log(result)
         this.props.onBeginningDateUpdate({
           beginningDate: this.editedBeginningDate.value,
           id: this.props.taskId
         });
+        this.editedBeginningDate.value = ''
       })
       .catch( (error) => {
         console.log(error);  
@@ -66,11 +67,11 @@ class ManageProjects extends React.Component{
       const body = "title=" + this.props.task.title + "&dueDate=" + this.editedDueDate.value
       request('editProjectDueDate', 'post', body, token)
       .then( (result) => {
-        console.log(result)
         this.props.onDueDateUpdate({
           dueDate: this.editedDueDate.value,
           id: this.props.taskId
         });
+        this.editedDueDate.value = ''
       })
       .catch( (error) => {
         console.log(error);  

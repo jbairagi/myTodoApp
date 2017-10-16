@@ -35,7 +35,6 @@ class AllProjects extends React.Component{
 
 const mapStateToProps = state => {
   return {
-
     projects: state.projects.allProjects,
     user: state.userLogin.user
   }
