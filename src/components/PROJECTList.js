@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addProject } from '../actions';
+import { addProject, getAllProjects } from '../actions';
 import { request } from './../helpers/fetchHelpers';
 
 class PROJECTList extends React.Component{
@@ -11,6 +11,10 @@ class PROJECTList extends React.Component{
       tasks.userProjects.forEach(function(project) {
         this.props.dispatch(addProject(project))
       }, this);
+      if(tasks.allProjects)
+        tasks.allProjects.forEach(function(project) {
+          this.props.dispatch(getAllProjects(project))
+        }, this);
     })
     .catch(function (error) {  
       console.log('Request failed', error);  
@@ -43,8 +47,7 @@ class PROJECTList extends React.Component{
 
 const mapStateToProps = state => {
   return {
-    projects: state.projects.userProjects,
-    user: state.userLogin.user
+    projects: state.projects.userProjects
   }
 }
   
