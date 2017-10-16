@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router, Route, browserHistory } from 'react-router'
-import HomePage from './homePage';
-import Login from './loginPage';
+import HomePage from './HomePage';
+import Login from './LoginPage';
 import Dashboard from './App';
 import NotFound from './NotFound';
 

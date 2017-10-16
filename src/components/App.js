@@ -1,7 +1,7 @@
 import React from 'react';
 import { browserHistory } from 'react-router'
 import { connect } from 'react-redux'
-import LogoutPage from './logoutPage'
+import LogoutPage from './LogoutPage'
 import PROJECTApp from './PROJECTApp'
 
 const App = ({isLoggedIn}) => (
