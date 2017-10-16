@@ -1,9 +1,9 @@
 import React from 'react';
 
-const AppHead = () => (
+const AppHead = (props) => (
   <div className="app-header">
     <p className="app-title">
-      Todo List App
+      {props.title}
     </p>
   </div>
 );

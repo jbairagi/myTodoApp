@@ -8,12 +8,13 @@ import AppHead from './AppHead';
 const PROJECTApp = ({isRoleManager}) => (
   <div className="container">
     <div className="row">
-      <div className="col-md-4 add-top-margin">
+      <div className="col-md-4">
         {isRoleManager && <AllProjects />}
       </div>
       <div className={isRoleManager ? "col-md-8" : "col-md-8 col-md-offset-2"}>
-        <AppHead />
+        {isRoleManager && <AppHead title={'Add Project'}/>}
         {isRoleManager && <ProjectAddForm />}
+        <AppHead title={'Projects Assigined'}/>
         <PROJECTList />
       </div>
     </div>
