@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { browserHistory, Link } from 'react-router'
-import { setLoginStatus, setUser, setUserRole } from '../actions';
-import { request } from './../helpers/fetchHelpers';
+import { login } from '../actions';
+// import { request } from './../helpers/fetchHelpers';
 
 class loginPage extends React.Component{
   componentWillMount(){
@@ -25,27 +25,7 @@ class loginPage extends React.Component{
                 if (!uname.value.trim() || !pass.value.trim()) {
                   return
                 }
-                const username = uname.value
-                const body = 'username='+username+'&password='+pass.value
-                request('login', 'post', body)
-                .then( (result) => {
-                  if(result.status === 200){
-                    const data = result.data
-                    window.localStorage.setItem('token', data.token);
-                    this.props.dispatch(setUser(username))
-                    this.props.dispatch(setLoginStatus(data.token !== undefined))
-                    this.props.dispatch(setUserRole(result.data.role === 'manager'))
-                    browserHistory.push('/dashboard');
-                  }
-                  else
-                    alert(result.message)
-                })
-                .catch( (error) => {
-                  window.localStorage.removeItem('token');
-                  browserHistory.push('*')
-                  console.log(error.status)
-                  console.log(error.message);  
-                });
+                this.props.dispatch(login('username='+uname.value+'&password='+pass.value))
                 uname.value = ''
                 pass.value = ''
               }}

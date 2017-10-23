@@ -27,7 +27,7 @@ class ManageProjects extends React.Component{
       .then( (result) => {
         this.props.onDescriptionUpdate({
           description: this.editedDescription.value,
-          id: this.props.taskId
+          _id: this.props.taskId
         });
         this.editedDescription.value = ''
       })
@@ -69,7 +69,7 @@ class ManageProjects extends React.Component{
       .then( (result) => {
         this.props.onDueDateUpdate({
           dueDate: this.editedDueDate.value,
-          id: this.props.taskId
+          _id: this.props.taskId
         });
         this.editedDueDate.value = ''
       })

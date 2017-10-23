@@ -1,24 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addProject, getAllProjects } from '../actions';
-import { request } from './../helpers/fetchHelpers';
+import { projects } from '../actions';
+// import { request } from './../helpers/fetchHelpers';
 
 class PROJECTList extends React.Component{
   componentDidMount(){
-    const token = window.localStorage.getItem('token')
-    request('projects', 'post', null, token )
-    .then(tasks => {
-      tasks.userProjects.forEach(function(project) {
-        this.props.dispatch(addProject(project))
-      }, this);
-      if(tasks.allProjects)
-        tasks.allProjects.forEach(function(project) {
-          this.props.dispatch(getAllProjects(project))
-        }, this);
-    })
-    .catch(function (error) {  
-      console.log('Request failed', error);  
-    });
+		this.props.dispatch(projects())
   }
 
   render(){
@@ -26,7 +13,7 @@ class PROJECTList extends React.Component{
       <ul className="list-group">
         {
           this.props.projects.map(task => 
-            <li className='list-group-item clearfix add-space' key={task.id}>
+            <li className='list-group-item clearfix add-space' key={task._id}>
               <h3>Project Title: {task.title}</h3>
               <p>
                 Description: {task.description}
@@ -46,6 +33,7 @@ class PROJECTList extends React.Component{
 }
 
 const mapStateToProps = state => {
+	console.log(state)
   return {
     projects: state.projects.userProjects
   }

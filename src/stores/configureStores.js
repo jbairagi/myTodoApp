@@ -4,12 +4,13 @@ import appReducer from '../reducers';
 import rootSaga from '../sagas';
 
 const configureStore = () => {
-  const sagaMiddleware = createSagaMiddleware();
-  return {
-    ...createStore(
+	const sagaMiddleware = createSagaMiddleware();
+	return {
+		...createStore(
 			appReducer,
-      compose(applyMiddleware(sagaMiddleware),
-    	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
+			compose(applyMiddleware(sagaMiddleware),
+			window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())),
+			runSaga: sagaMiddleware.run(rootSaga)
   };
 };
 

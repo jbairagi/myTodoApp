@@ -10,7 +10,7 @@ class AllProjects extends React.Component{
         <AppHead title={'All Projects'}/>
         <ul className="list-group">
           {
-            this.props.projects.map(task => <ManageProjects task={task} taskId={task.id} key={task.id} />)
+            this.props.projects.map(task => <ManageProjects task={task} taskId={task._id} key={task._id} />)
           }
         </ul>
       </div>
@@ -19,6 +19,8 @@ class AllProjects extends React.Component{
 }
 
 const mapStateToProps = state => {
+  console.log("lllllllllllllllllllllllllllllll")
+  console.log(state.projects.allProjects)
   return {
     projects: state.projects.allProjects
   }

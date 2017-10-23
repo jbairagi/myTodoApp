@@ -1,26 +1,45 @@
-export const addProject = project => {
+export const login = userCredentials => {
+  return {
+    type: 'LOGIN',
+    userCredentials
+  }
+}
+
+export const projects = () => {
+  return {
+    type: 'PROJECT'
+  }
+}
+
+export const addProjects = projects => {
+  console.log(">>>>>>>>>>>>>>>>>>>>>")
+  console.log(projects)
+  return {
+    type: 'ADD_PROJECTS',
+    projects
+  }
+}
+
+export const addProject = (project, check) => {
+  console.log(">>>>>>>>>>>>>>>>>>>>>")
+  console.log(project)
   let beginningDate = new Date(project.beginningDate)
   let dueDate = new Date(project.dueDate)
   return {
     type: 'ADD_PROJECT',
-    id: project._id,
+    _id: project._id,
     title: project.title,
     description: project.description,
     beginningDate: beginningDate.toISOString().slice(0,10),
-    dueDate: dueDate.toISOString().slice(0,10)
+    dueDate: dueDate.toISOString().slice(0,10),
+    check
   }
 }
 
-export const getAllProjects = project => {
-  let beginningDate = new Date(project.beginningDate)
-  let dueDate = new Date(project.dueDate)
+export const getAllProjects = projects => {
   return {
     type: 'GET_ALL_PROJECTS',
-    id: project._id,
-    title: project.title,
-    description: project.description,
-    beginningDate: beginningDate.toISOString().slice(0,10),
-    dueDate: dueDate.toISOString().slice(0,10)
+    projects
   }
 }
 
@@ -45,10 +64,10 @@ export const updateDueDate = Project => {
   }
 }
 
-export const deleteProject = id => {
+export const deleteProject = _id => {
   return {
     type: 'DELETE_PROJECT',
-    id
+    _id
   }
 }
 

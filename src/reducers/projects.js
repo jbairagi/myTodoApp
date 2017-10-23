@@ -5,35 +5,58 @@ const initialStateUser = {
 
 const projects = (state = initialStateUser, action) => {
   switch (action.type) {
-    case 'ADD_PROJECT':
-      const userProjects = {
+    case 'ADD_PROJECTS':
+      action.projects.map(project => {
+        let beginningDate = new Date(project.beginningDate)
+        let dueDate = new Date(project.dueDate)
+        project.beginningDate = beginningDate.toISOString().slice(0,10)
+        project.dueDate = dueDate.toISOString().slice(0,10)
+      })
+      const userProjectsTemp = {
         ...state,
-        userProjects: [
+        // userProjects: action.projects
+        userProjects: action.projects
+      };
+      console.log(userProjectsTemp)
+      return userProjectsTemp;
+
+    case 'ADD_PROJECT':
+      console.log(action)
+      const check = action.check
+      const allProjectsP= [
+        ...state.allProjects,
+        {
+          id: action.id,
+          title: action.title,
+          description: action.description,
+          beginningDate: action.beginningDate,
+          dueDate: action.dueDate
+        }
+      ]
+      const userProjectsP = state.userProjects
+      if(check){
+        const userProjectsP = [
           ...state.userProjects,
           {
-            id: action.id,
+            _id: action._id,
             title: action.title,
             description: action.description,
             beginningDate: action.beginningDate,
             dueDate: action.dueDate
           }
         ]
-      };
-      return userProjects;
-    
+      }
+      const finalStateP = {
+        ...state,
+        allProjects: allProjectsP,
+        userProjects: userProjectsP
+      }
+      return finalStateP
+  
     case 'GET_ALL_PROJECTS':
       const allProjects = {
         ...state,
-        allProjects: [
-          ...state.allProjects,
-          {
-            id: action.id,
-            title: action.title,
-            description: action.description,
-            beginningDate: action.beginningDate,
-            dueDate: action.dueDate
-          }
-        ]
+        allProjects: action.projects
       };
       return allProjects;
 

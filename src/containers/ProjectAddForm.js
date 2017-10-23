@@ -19,8 +19,7 @@ const ProjectAddForm = ({dispatch, user}) => {
           request('addProjects', 'post', body, token)
           .then( (result) => {
             console.log(result)
-            if (user === assignedDeveloper) dispatch(addProject(result));
-            dispatch(getAllProjects(result))
+            dispatch(addProject(result, user === assignedDeveloper));
           })
           .catch( (error) => {  
             console.log(error);  
