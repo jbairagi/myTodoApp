@@ -1,10 +1,10 @@
 import { fork, all } from 'redux-saga/effects';
-import loginSaga from './watchUserLogin';
-import projectSaga from './watchAddProjects';
+import userSaga from './UserSaga';
+import projectSaga from './projectSaga';
 
 export default function* rootSaga() {
     yield all([
-        fork(loginSaga),
+        fork(userSaga),
         fork(projectSaga)
     ]);
 }

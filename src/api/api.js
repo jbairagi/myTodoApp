@@ -4,6 +4,10 @@ export const login = body => {
     return request('login', 'post', body)
 }
 
+export const addNewUser = body => {
+    return request('addUser', 'post', body)
+}
+
 export const getProjects = () => {
     return request('projects', 'post', null)
 }
@@ -25,6 +29,5 @@ export const updateProjectBeginningDate = (body) => {
 }
 
 export const updateProjectDueDate = (body) => {
-    console.log(body)
     return request('editProjectDueDate', 'post', body)
 }

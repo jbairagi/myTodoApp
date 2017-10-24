@@ -1,8 +1,9 @@
 import { put, call, all, takeLatest } from 'redux-saga/effects';
-import { login } from '../api/api';
+import { login, addNewUser } from '../api/api';
 
-export default function* loginSaga() {
+export default function* userSaga() {
 	yield takeLatest('LOGIN', watchUserLogin);
+	yield takeLatest('ADD_USER', watchAddUser);
 }
 
 function* watchUserLogin({ userCredentials }) {
@@ -21,5 +22,15 @@ function* watchUserLogin({ userCredentials }) {
 	} 
 	catch (error) {
 		console.log(error)
-  }
+  	}
 }
+
+function* watchAddUser({ userInfo }) {
+	const response = yield call(addNewUser, userInfo);
+	// if(response.status === 200){
+	// 	alert(response.message)
+	// }
+	// else
+	// 	alert(response.message)
+}
+  

@@ -12,8 +12,8 @@ const ProjectAddForm = ({dispatch, user}) => {
           if (!title.value.trim() || !description.value.trim() || !beginningDate.value.trim() || !dueDate.value.trim() || !developer.value.trim()) {
             return
           }
-          const porjectInfo = 'title='+title.value + '&description=' + description.value + '&beginningDate=' + beginningDate.value + '&dueDate='+ dueDate.value + '&developer=' + developer.value
-          dispatch(addNewProject(porjectInfo));
+          const projectInfo = 'title='+title.value + '&description=' + description.value + '&beginningDate=' + beginningDate.value + '&dueDate='+ dueDate.value + '&developer=' + developer.value
+          dispatch(addNewProject(projectInfo));
           title.value = ''
           description.value = ''
           beginningDate.value = ''

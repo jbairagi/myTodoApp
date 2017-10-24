@@ -18,6 +18,13 @@ export const addNewProject = (projectInfo) => {
   }
 }
 
+export const addNewUser = (userInfo) => {
+  return {
+    type: 'ADD_USER',
+    userInfo
+  }
+}
+
 export const updateProjectDescription = Project => {
   return {
     type: 'UPDATE_DESCRIPTION',
