@@ -19,8 +19,6 @@ class AllProjects extends React.Component{
 }
 
 const mapStateToProps = state => {
-  console.log("lllllllllllllllllllllllllllllll")
-  console.log(state.projects.allProjects)
   return {
     projects: state.projects.allProjects
   }

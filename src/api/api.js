@@ -1,5 +1,4 @@
 import {ROOT_URL} from './../constants/constants'
-import { browserHistory } from 'react-router'
 
 export const request = (path, method, body = null) => {
     let headers = {
@@ -9,7 +8,6 @@ export const request = (path, method, body = null) => {
     if(token){
         headers["auth-token"] = token
     }
-    // else browserHistory.push('/');
     return fetch(`${ROOT_URL}${path}`, {
         method: method,  
         headers: headers,  
@@ -26,6 +24,10 @@ export const login = body => {
     return request('login', 'post', body)
 }
 
-export const project = () => {
+export const getProjects = () => {
     return request('projects', 'post', null)
+}
+
+export const addNewProjects = (body) => {
+    return request('addProjects', 'post', body)
 }

@@ -1,6 +1,5 @@
 import { put, call, all, takeLatest } from 'redux-saga/effects';
 import { login } from '../api/api';
-import { browserHistory } from 'react-router'
 
 export default function* loginSaga() {
 	yield takeLatest('LOGIN', watchUserLogin);
@@ -15,8 +14,7 @@ function* watchUserLogin({ userCredentials }) {
 				put({ type: 'SET_USER', user: response.data.username }),
 				put({ type: 'SET_LOGIN_STATUS', isLoggedIn: response.data.token !== undefined }),
 				put({ type: 'SET_USER_ROLE', isRoleManager: response.data.role === 'manager' })
-			]);
-			browserHistory.push('/dashboard');
+			]); 
 		}
 		else
 			alert(response.message)

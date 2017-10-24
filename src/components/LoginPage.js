@@ -2,12 +2,21 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { browserHistory, Link } from 'react-router'
 import { login } from '../actions';
-// import { request } from './../helpers/fetchHelpers';
 
 class loginPage extends React.Component{
   componentWillMount(){
-    if(window.localStorage.getItem('token') === undefined || null) return;
-    else if (window.localStorage.getItem('token')) browserHistory.push('/dashboard');
+    // if(window.localStorage.getItem('token') === undefined || null) return;
+    // else if (window.localStorage.getItem('token')) browserHistory.push('/dashboard');
+    if(this.props.isLoggedIn) {
+      browserHistory.push('/dashboard')
+    }
+  }
+
+  componentWillReceiveProps(nextProps){
+    if((this.props.isLoggedIn !== nextProps.isLoggedIn) && nextProps.isLoggedIn) {
+      browserHistory.push('/dashboard')
+    }
+    // else if (window.localStorage.getItem('token')) browserHistory.push('/dashboard');
   }
 
   render(){
@@ -56,4 +65,10 @@ class loginPage extends React.Component{
   }
 }
 
-export default connect()(loginPage);
+const mapStateToProps = state => {
+  return {
+     isLoggedIn: state.userLogin.isLoggedIn
+  }
+}
+
+export default connect(mapStateToProps)(loginPage);

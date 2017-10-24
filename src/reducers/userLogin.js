@@ -1,9 +1,11 @@
-const token= window.localStorage.getItem('token')
 var jwtDecode = require('jwt-decode');
 
 const initialStateUser = () => {
-  if(token === null) return {isLoggedIn: false, user: undefined}
-  
+  const token= window.localStorage.getItem('token')
+  if(token === null) {
+    return {isLoggedIn: false, user: undefined}
+  }
+
   else{
     const isRoleManager = (jwtDecode(token).role === 'manager' ) ? true : false
     const user = jwtDecode(token).name
@@ -11,7 +13,7 @@ const initialStateUser = () => {
   }
 }
 
-const userLogin = (state = initialStateUser(), action) => {
+const userLogin = (state = initialStateUser(), action, root) => {
   switch (action.type) {
     case 'SET_LOGIN_STATUS':
       return {
@@ -32,8 +34,7 @@ const userLogin = (state = initialStateUser(), action) => {
       }
     
     case 'CLEAR_STORE':
-      state=[];
-      return state
+      return {isLoggedIn: false, user: undefined}
 
     default:
       return state

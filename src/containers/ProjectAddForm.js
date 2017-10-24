@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect}  from 'react-redux'
-import { addProject, getAllProjects } from '../actions'
-import { request } from './../helpers/fetchHelpers';
+import { addNewProject } from '../actions'
 
 const ProjectAddForm = ({dispatch, user}) => {
   let title, description, beginningDate, dueDate, developer
@@ -13,17 +12,8 @@ const ProjectAddForm = ({dispatch, user}) => {
           if (!title.value.trim() || !description.value.trim() || !beginningDate.value.trim() || !dueDate.value.trim() || !developer.value.trim()) {
             return
           }
-          const token= window.localStorage.getItem('token')
-          const assignedDeveloper = developer.value
-          const body = 'title='+title.value + '&description=' + description.value + '&beginningDate=' + beginningDate.value + '&dueDate='+ dueDate.value + '&developer=' + developer.value
-          request('addProjects', 'post', body, token)
-          .then( (result) => {
-            console.log(result)
-            dispatch(addProject(result, user === assignedDeveloper));
-          })
-          .catch( (error) => {  
-            console.log(error);  
-          });
+          const porjectInfo = 'title='+title.value + '&description=' + description.value + '&beginningDate=' + beginningDate.value + '&dueDate='+ dueDate.value + '&developer=' + developer.value
+          dispatch(addNewProject(porjectInfo));
           title.value = ''
           description.value = ''
           beginningDate.value = ''

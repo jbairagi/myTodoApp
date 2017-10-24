@@ -3,53 +3,54 @@ const initialStateUser = {
   userProjects: []
 }
 
-const projects = (state = initialStateUser, action) => {
+const projects = (state = initialStateUser, action, root) => {
   switch (action.type) {
-    case 'ADD_PROJECTS':
+    case 'GET_USER_PROJECTS':
+      let beginningDate
+      let dueDate
       action.projects.map(project => {
-        let beginningDate = new Date(project.beginningDate)
-        let dueDate = new Date(project.dueDate)
-        project.beginningDate = beginningDate.toISOString().slice(0,10)
-        project.dueDate = dueDate.toISOString().slice(0,10)
+        return (
+          beginningDate = new Date(project.beginningDate),
+          dueDate = new Date(project.dueDate),
+          project.beginningDate = beginningDate.toISOString().slice(0,10),
+          project.dueDate = dueDate.toISOString().slice(0,10)
+        )
       })
       const userProjectsTemp = {
         ...state,
-        // userProjects: action.projects
         userProjects: action.projects
       };
-      console.log(userProjectsTemp)
       return userProjectsTemp;
 
-    case 'ADD_PROJECT':
-      console.log(action)
-      const check = action.check
-      const allProjectsP= [
+    case 'SET_NEW_PROJECT':
+      beginningDate = new Date(action.response.project.beginningDate)
+      dueDate = new Date(action.response.project.dueDate)
+      beginningDate = beginningDate.toISOString().slice(0,10)
+      dueDate = dueDate.toISOString().slice(0,10)
+        
+      let project = {
+              _id: action.response.project._id,
+              title: action.response.project.title,
+              description: action.response.project.description,
+              beginningDate: beginningDate,
+              dueDate: dueDate
+            }
+      const allProjectsArrayP = [
         ...state.allProjects,
-        {
-          id: action.id,
-          title: action.title,
-          description: action.description,
-          beginningDate: action.beginningDate,
-          dueDate: action.dueDate
-        }
+        project
       ]
-      const userProjectsP = state.userProjects
-      if(check){
-        const userProjectsP = [
-          ...state.userProjects,
-          {
-            _id: action._id,
-            title: action.title,
-            description: action.description,
-            beginningDate: action.beginningDate,
-            dueDate: action.dueDate
-          }
-        ]
-      }
+
       const finalStateP = {
         ...state,
-        allProjects: allProjectsP,
-        userProjects: userProjectsP
+        allProjects: allProjectsArrayP
+      }
+
+      if (root.userLogin.user === action.response.developer){
+        const userProjectsArrayP = [
+          ...state.userProjects,
+          project
+        ]
+        finalStateP.userProjects = userProjectsArrayP
       }
       return finalStateP
   

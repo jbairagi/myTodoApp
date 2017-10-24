@@ -1,10 +1,12 @@
-import { combineReducers } from 'redux'
+// import { combineReducers } from 'redux'
 import projects from './projects'
 import userLogin from './userLogin'
 
-const appReducer = combineReducers({
-  projects,
-  userLogin
-})
+export default (state = {}, action) => {
+  return{
+    projects: projects(state.projects, action, state),
+    userLogin: userLogin(userLogin.app, action, state)
+  };
+};
 
-export default appReducer
+// export default appReducer
