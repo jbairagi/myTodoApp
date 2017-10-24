@@ -1,24 +1,4 @@
-import {ROOT_URL} from './../constants/constants'
-
-export const request = (path, method, body = null) => {
-    let headers = {
-        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-    }
-    const token = window.localStorage.getItem('token')
-    if(token){
-        headers["auth-token"] = token
-    }
-    return fetch(`${ROOT_URL}${path}`, {
-        method: method,  
-        headers: headers,  
-        body: body
-    })
-    .then(res => res.json())
-    .then(result => {
-        return result;
-    })
-}
-
+import { request } from './../helpers/fetchHelpers';
 
 export const login = body => {
     return request('login', 'post', body)
@@ -30,4 +10,21 @@ export const getProjects = () => {
 
 export const addNewProjects = (body) => {
     return request('addProjects', 'post', body)
+}
+
+export const removeProject = (body) => {
+    return request('removeProject', 'post', body)
+}
+
+export const updateProjectDescription = (body) => {
+    return request('editProjectDescription', 'post', body)
+}
+
+export const updateProjectBeginningDate = (body) => {
+    return request('editProjectBeginningDate', 'post', body)
+}
+
+export const updateProjectDueDate = (body) => {
+    console.log(body)
+    return request('editProjectDueDate', 'post', body)
 }

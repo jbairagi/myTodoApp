@@ -11,43 +11,10 @@ export const projects = () => {
   }
 }
 
-export const addNewProject = (porjectInfo) => {
+export const addNewProject = (projectInfo) => {
   return {
     type: 'ADD_PROJECT',
-    porjectInfo
-  }
-}
-
-export const getUserProjects = projects => {
-  console.log(">>>>>>>>>>>>>>>>>>>>>")
-  console.log(projects)
-  return {
-    type: 'GET_USER__PROJECTS',
-    projects
-  }
-}
-
-export const setNewProject = response  => {
-  // console.log("6666666666666666666666" + bodyData + ' ' + check )
-  console.log(response.project + ' ' +response.developer)
-  // let beginningDate = new Date(project.beginningDate)
-  // let dueDate = new Date(project.dueDate)
-  return {
-    type: 'SET_NEW_PROJECT',
-    response
-
-    // _id: project._id,
-    // title: project.title,
-    // description: project.description,
-    // beginningDate: beginningDate.toISOString().slice(0,10),
-    // dueDate: dueDate.toISOString().slice(0,10),
-  }
-}
-
-export const getAllProjects = projects => {
-  return {
-    type: 'GET_ALL_PROJECTS',
-    projects
+    projectInfo
   }
 }
 
@@ -72,10 +39,11 @@ export const updateDueDate = Project => {
   }
 }
 
-export const deleteProject = _id => {
+export const deleteProject = (id, projectInfo) => {
   return {
-    type: 'DELETE_PROJECT',
-    _id
+    type: 'REMOVE_PROJECT',
+    id,
+    projectInfo
   }
 }
 

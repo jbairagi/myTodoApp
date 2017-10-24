@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { projects } from '../actions';
-// import { request } from './../helpers/fetchHelpers';
 
 class PROJECTList extends React.Component{
   componentDidMount(){

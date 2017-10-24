@@ -1,19 +1,11 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {request} from './../helpers/fetchHelpers';
-import {deleteProject, updateProjectDescription, updateBeginningDate, updateDueDate} from './../actions';
+import { connect } from 'react-redux';
+import { deleteProject, updateProjectDescription, updateBeginningDate, updateDueDate } from './../actions';
 
 class ManageProjects extends React.Component{
   removeProject = (e) => {
-    const token= window.localStorage.getItem('token') 
-    const body = "title=" + this.props.task.title
-    request('removeProject', 'post', body, token)
-    .then( (result) => {
-      this.props.onDelete(this.props.taskId);
-    })
-    .catch( (error) => {
-      console.log(error);  
-    });     
+    const projectInfo = "title=" + this.props.task.title
+    this.props.onDelete(this.props.taskId, projectInfo)
     e.preventDefault();
   }
 
@@ -21,19 +13,13 @@ class ManageProjects extends React.Component{
     if(this.editedDescription.value === '')
       e.preventDefault();
     else {
-      const token= window.localStorage.getItem('token') 
-      const body = "title=" + this.props.task.title + "&description=" + this.editedDescription.value
-      request('editProjectDescription', 'post', body, token)
-      .then( (result) => {
-        this.props.onDescriptionUpdate({
-          description: this.editedDescription.value,
-          _id: this.props.taskId
-        });
-        this.editedDescription.value = ''
-      })
-      .catch( (error) => {
-        console.log(error);  
+      const projectInfo = "title=" + this.props.task.title + "&description=" + this.editedDescription.value
+      this.props.onDescriptionUpdate({
+        description: this.editedDescription.value,
+        _id: this.props.taskId,
+        projectInfo
       });
+      this.editedDescription.value = ''
       e.preventDefault();
     }
   }
@@ -42,19 +28,13 @@ class ManageProjects extends React.Component{
     if(this.editedBeginningDate.value === '')
       e.preventDefault();
     else {
-      const token= window.localStorage.getItem('token') 
-      const body = "title=" + this.props.task.title + "&beginningDate=" + this.editedBeginningDate.value
-      request('editProjectBeginningDate', 'post', body, token)
-      .then( (result) => {
-        this.props.onBeginningDateUpdate({
-          beginningDate: this.editedBeginningDate.value,
-          id: this.props.taskId
-        });
-        this.editedBeginningDate.value = ''
-      })
-      .catch( (error) => {
-        console.log(error);  
+      const projectInfo = "title=" + this.props.task.title + "&beginningDate=" + this.editedBeginningDate.value
+      this.props.onBeginningDateUpdate({
+        beginningDate: this.editedBeginningDate.value,
+        id: this.props.taskId,
+        projectInfo
       });
+      this.editedBeginningDate.value = ''
       e.preventDefault();
     }
   }
@@ -63,19 +43,13 @@ class ManageProjects extends React.Component{
     if(this.editedDueDate.value === '')
       e.preventDefault();
     else {
-      const token= window.localStorage.getItem('token') 
-      const body = "title=" + this.props.task.title + "&dueDate=" + this.editedDueDate.value
-      request('editProjectDueDate', 'post', body, token)
-      .then( (result) => {
-        this.props.onDueDateUpdate({
-          dueDate: this.editedDueDate.value,
-          _id: this.props.taskId
-        });
-        this.editedDueDate.value = ''
-      })
-      .catch( (error) => {
-        console.log(error);  
+      const projectInfo = "title=" + this.props.task.title + "&dueDate=" + this.editedDueDate.value
+      this.props.onDueDateUpdate({
+        dueDate: this.editedDueDate.value,
+        id: this.props.taskId,
+        projectInfo
       });
+      this.editedDueDate.value = ''
       e.preventDefault();
     }
   }
@@ -132,8 +106,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onDelete: id => {
-      dispatch(deleteProject(id))
+    onDelete: (id, porjectInfo) => {
+      dispatch(deleteProject(id, porjectInfo))
     },
     onDescriptionUpdate: project => {
       dispatch(updateProjectDescription(project))

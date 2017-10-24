@@ -55,6 +55,14 @@ const projects = (state = initialStateUser, action, root) => {
       return finalStateP
   
     case 'GET_ALL_PROJECTS':
+      action.projects.map(project => {
+        return (
+          beginningDate = new Date(project.beginningDate),
+          dueDate = new Date(project.dueDate),
+          project.beginningDate = beginningDate.toISOString().slice(0,10),
+          project.dueDate = dueDate.toISOString().slice(0,10)
+        )
+      })
       const allProjects = {
         ...state,
         allProjects: action.projects
@@ -81,12 +89,12 @@ const projects = (state = initialStateUser, action, root) => {
 
     case 'UPDATE_BEGINNING_DATE':
       const allProjectsArrayB = state.allProjects.map(project =>
-        (project.id === action.Project.id)
+        (project._id === action.Project.id)
         ? {...project, beginningDate: action.Project.beginningDate}
         : project)
       
       const userProjectsArrayB = state.userProjects.map(project =>
-        (project.id === action.Project.id)
+        (project._id === action.Project.id)
         ? {...project, beginningDate: action.Project.beginningDate}
         : project)
 
@@ -99,12 +107,12 @@ const projects = (state = initialStateUser, action, root) => {
 
     case 'UPDATE_DUE_DATE':
       const allProjectsArrayDD = state.allProjects.map(project =>
-        (project.id === action.Project.id)
+        (project._id === action.Project.id)
         ? {...project, dueDate: action.Project.dueDate}
         : project)
       
       const userProjectsArrayDD = state.userProjects.map(project =>
-        (project.id === action.Project.id)
+        (project._id === action.Project.id)
         ? {...project, dueDate: action.Project.dueDate}
         : project)
 
@@ -118,13 +126,11 @@ const projects = (state = initialStateUser, action, root) => {
 
     case 'DELETE_PROJECT':
       const allProjectsArrayD = state.allProjects.filter(function (e) {
-        return e.id !== action.id;
+        return e._id !== action.id;
       });
-
       const userProjectsArrayD = state.userProjects.filter(function (e) {
-        return e.id !== action.id;
+        return e._id !== action.id;
       });
-
       const finalStateD = {
         ...state,
         allProjects: allProjectsArrayD,

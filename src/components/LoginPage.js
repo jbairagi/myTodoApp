@@ -5,8 +5,6 @@ import { login } from '../actions';
 
 class loginPage extends React.Component{
   componentWillMount(){
-    // if(window.localStorage.getItem('token') === undefined || null) return;
-    // else if (window.localStorage.getItem('token')) browserHistory.push('/dashboard');
     if(this.props.isLoggedIn) {
       browserHistory.push('/dashboard')
     }
@@ -16,7 +14,6 @@ class loginPage extends React.Component{
     if((this.props.isLoggedIn !== nextProps.isLoggedIn) && nextProps.isLoggedIn) {
       browserHistory.push('/dashboard')
     }
-    // else if (window.localStorage.getItem('token')) browserHistory.push('/dashboard');
   }
 
   render(){
