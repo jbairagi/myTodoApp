@@ -12,22 +12,22 @@ export const getProjects = () => {
 	return request('projects', 'post', null);
 };
 
-export const addNewProjects = (body) => {
+export const addNewProjects = body => {
 	return request('addProjects', 'post', body);
 };
 
-export const removeProject = (body) => {
+export const removeProject = body => {
 	return request('removeProject', 'post', body);
 };
 
-export const updateProjectDescription = (body) => {
+export const updateProjectDescription = body => {
 	return request('editProjectDescription', 'post', body);
 };
 
-export const updateProjectBeginningDate = (body) => {
+export const updateProjectBeginningDate = body => {
 	return request('editProjectBeginningDate', 'post', body);
 };
 
-export const updateProjectDueDate = (body) => {
+export const updateProjectDueDate = body => {
 	return request('editProjectDueDate', 'post', body);
 };

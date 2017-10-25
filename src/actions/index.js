@@ -1,4 +1,4 @@
-export const login = (userCredentials) => {
+export const login = userCredentials => {
 	return {
 		type: 'LOGIN',
 		userCredentials
@@ -11,35 +11,35 @@ export const projects = () => {
 	};
 };
 
-export const addNewProject = (projectInfo) => {
+export const addNewProject = projectInfo => {
 	return {
 		type: 'ADD_PROJECT',
 		projectInfo
 	};
 };
 
-export const addNewUser = (userInfo) => {
+export const addNewUser = userInfo => {
 	return {
 		type: 'ADD_USER',
 		userInfo
 	};
 };
 
-export const updateProjectDescription = (project) => {
+export const updateProjectDescription = project => {
 	return {
 		type: 'UPDATE_DESCRIPTION',
 		project
 	};
 };
 
-export const updateBeginningDate = (project) => {
+export const updateBeginningDate = project => {
 	return {
 		type: 'UPDATE_BEGINNING_DATE',
 		project
 	};
 };
 
-export const updateDueDate = (project) => {
+export const updateDueDate = project => {
 	return {
 		type: 'UPDATE_DUE_DATE',
 		project
