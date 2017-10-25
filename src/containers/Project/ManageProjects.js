@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deleteProject, updateProjectDescription, updateBeginningDate, updateDueDate } from './../actions';
+import { deleteProject, updateProjectDescription, updateBeginningDate, updateDueDate } from '../../actions';
 
 class ManageProjects extends React.Component {
 	render() {

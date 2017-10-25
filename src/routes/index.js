@@ -1,9 +1,9 @@
 import React from 'react';
 import { Router, Route, browserHistory } from 'react-router';
-import HomePage from './components/HomePage';
-import Login from './components/LoginPage';
-import Dashboard from './components/App';
-import NotFound from './components/NotFound';
+import HomePage from '../components/App/HomePage';
+import Login from '../containers/User/LoginPage';
+import Dashboard from '../containers/App';
+import NotFound from '../components/NotFound';
 
 const Routes = () => (
 	<Router history={browserHistory}>

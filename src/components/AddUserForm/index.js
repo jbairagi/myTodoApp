@@ -1,6 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { addNewUser } from '../actions';
+import { addNewUser } from '../../actions';
 
 const AddUserForm = ({ dispatch }) => {
 	let username, emailId, password, role;
@@ -45,4 +44,4 @@ const AddUserForm = ({ dispatch }) => {
 	);
 };
 
-export default connect()(AddUserForm);
+export default AddUserForm;

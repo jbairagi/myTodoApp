@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AppHead = (props) => (
+const TitleHead = (props) => (
 	<div className="app-header">
 		<p className="app-title">
 			{props.title}
@@ -8,4 +8,4 @@ const AppHead = (props) => (
 	</div>
 );
 
-export default AppHead;
+export default TitleHead;

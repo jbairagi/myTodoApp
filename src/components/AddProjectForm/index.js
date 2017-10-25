@@ -1,6 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { addNewProject } from '../actions';
+import { addNewProject } from '../../actions';
 
 const AddProjectForm = ({ dispatch }) => {
 	let title, description, beginningDate, dueDate, developer;
@@ -44,4 +43,4 @@ const AddProjectForm = ({ dispatch }) => {
 	);
 };
 
-export default connect()(AddProjectForm);
+export default AddProjectForm;

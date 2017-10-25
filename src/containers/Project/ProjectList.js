@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { projects } from '../actions';
+import { projects } from '../../actions';
 
 class ProjectList extends React.Component{
 	componentDidMount(){

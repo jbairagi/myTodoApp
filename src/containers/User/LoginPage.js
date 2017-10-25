@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { browserHistory, Link } from 'react-router';
-import { login } from '../actions';
+import { login } from '../../actions';
 
 class loginPage extends React.Component{
 	componentWillMount(){

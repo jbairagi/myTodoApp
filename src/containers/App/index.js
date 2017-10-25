@@ -1,13 +1,13 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
-import LogoutPage from './LogoutPage';
-import ProjectApp from './ProjectApp';
+import LogoutPage from '../../components/LogoutPage';
+import ProjectApp from '../Project';
 
-const App = ({ isLoggedIn }) => (
+const App = ({ isLoggedIn, dispatch }) => (
 	<div>
 		{!isLoggedIn && browserHistory.push('/login')}
-		{isLoggedIn && <LogoutPage />}
+		{isLoggedIn && <LogoutPage dispatch={dispatch}/>}
 		{isLoggedIn && <ProjectApp />}
 	</div>
 );

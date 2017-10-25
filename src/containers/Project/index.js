@@ -1,23 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import AddProjectForm from './../containers/AddProjectForm';
-import AddUserForm from './../containers/AddUserForm';
+import AddProjectForm from '../../components/AddProjectForm';
+import AddUserForm from '../../components/AddUserForm';
 import ProjectList from './ProjectList';
 import AllProjects from './AllProjects';
-import AppHead from './AppHead';
+import TitleHead from '../../components/TitleHead';
 
-const ProjectApp = ({isRoleManager}) => (
+const ProjectApp = ({isRoleManager, dispatch}) => (
 	<div className="container">
 		<div className="row">
 			<div className="col-md-4">
 				{isRoleManager && <AllProjects />}
 			</div>
 			<div className={isRoleManager ? 'col-md-8' : 'col-md-8 col-md-offset-2'}>
-				{isRoleManager && <AppHead title='Add Project'/>}
-				{isRoleManager && <AddProjectForm />}
-				{isRoleManager && <AppHead title='Add New User'/>}
-				{isRoleManager && <AddUserForm />}
-				<AppHead title='Projects Assigined'/>
+				{isRoleManager && <TitleHead title='Add Project'/>}
+				{isRoleManager && <AddProjectForm dispatch = {dispatch}/>}
+				{isRoleManager && <TitleHead title='Add New User'/>}
+				{isRoleManager && <AddUserForm dispatch = {dispatch}/>}
+				<TitleHead title='Projects Assigined'/>
 				<ProjectList />
 			</div>
 		</div>

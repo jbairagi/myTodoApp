@@ -1,13 +1,13 @@
 import React from 'react';
 import ManageProjects from './ManageProjects';
 import { connect } from 'react-redux';
-import AppHead from './AppHead';
+import TitleHead from '../../components/TitleHead';
 
 class AllProjects extends React.Component {
 	render() {
 		return (
 			<div>
-				<AppHead title='All Projects' />
+				<TitleHead title='All Projects' />
 				<ul className="list-group">
 					{
 						this.props.projects.map(task => <ManageProjects task={task} taskId={task._id} key={task._id} />)
@@ -21,6 +21,5 @@ class AllProjects extends React.Component {
 const mapStateToProps = state => ({
 	projects: state.projects.allProjects
 });
-
 
 export default connect(mapStateToProps)(AllProjects);
