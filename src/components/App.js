@@ -12,10 +12,8 @@ const App = ({ isLoggedIn }) => (
 	</div>
 );
 
-const mapStateToProps = state => {
-	return {
-		isLoggedIn: state.userLogin.isLoggedIn
-	};
-};
+const mapStateToProps = state => ({
+	isLoggedIn: state.userLogin.isLoggedIn
+});
 
 export default connect(mapStateToProps)(App);

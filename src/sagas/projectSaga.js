@@ -1,5 +1,5 @@
 import { put, call, takeLatest } from 'redux-saga/effects';
-import { getProjects, addNewProjects, removeProject, updateProjectDescription, updateProjectBeginningDate, updateProjectDueDate } from '../api/api';
+import { getProjects, addNewProjects, removeProject, updateProjectDescription, updateProjectBeginningDate, updateProjectDueDate } from '../api';
 
 export default function* projectSaga() {
 	yield takeLatest('GET_PROJECTS', watchGetAllProjects);

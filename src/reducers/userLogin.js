@@ -1,4 +1,4 @@
-var jwtDecode = require('jwt-decode');
+const jwtDecode = require('jwt-decode');
 
 const initialStateUser = () => {
 	const token = window.localStorage.getItem('token');

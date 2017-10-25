@@ -1,5 +1,5 @@
 import { put, call, all, takeLatest } from 'redux-saga/effects';
-import { login, addNewUser } from '../api/api';
+import { login, addNewUser } from '../api';
 
 export default function* userSaga() {
 	yield takeLatest('LOGIN', watchUserLogin);

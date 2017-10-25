@@ -13,21 +13,19 @@ const ProjectApp = ({isRoleManager}) => (
 				{isRoleManager && <AllProjects />}
 			</div>
 			<div className={isRoleManager ? 'col-md-8' : 'col-md-8 col-md-offset-2'}>
-				{isRoleManager && <AppHead title={'Add Project'}/>}
+				{isRoleManager && <AppHead title='Add Project'/>}
 				{isRoleManager && <AddProjectForm />}
-				{isRoleManager && <AppHead title={'Add New User'}/>}
+				{isRoleManager && <AppHead title='Add New User'/>}
 				{isRoleManager && <AddUserForm />}
-				<AppHead title={'Projects Assigined'}/>
+				<AppHead title='Projects Assigined'/>
 				<ProjectList />
 			</div>
 		</div>
 	</div>
 );
 
-const mapStateToProps = state => {
-	return {
-		isRoleManager: state.userLogin.isRoleManager
-	};
-};
+const mapStateToProps = state => ({
+	isRoleManager: state.userLogin.isRoleManager
+});
 
 export default connect(mapStateToProps)(ProjectApp);

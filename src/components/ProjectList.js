@@ -31,10 +31,8 @@ class ProjectList extends React.Component{
 	}
 }
 
-const mapStateToProps = state => {
-	return {
-		projects: state.projects.userProjects
-	};
-};
-  
+const mapStateToProps = state => ({
+	projects: state.projects.userProjects
+});
+
 export default connect(mapStateToProps)(ProjectList);
