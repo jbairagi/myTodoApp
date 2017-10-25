@@ -9,9 +9,9 @@ const configureStore = () => {
 		...createStore(
 			appReducer,
 			compose(applyMiddleware(sagaMiddleware),
-			window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())),
-			runSaga: sagaMiddleware.run(rootSaga)
-  };
+				window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())),
+		runSaga: sagaMiddleware.run(rootSaga)
+	};
 };
 
 export default configureStore;

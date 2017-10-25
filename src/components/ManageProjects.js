@@ -4,55 +4,55 @@ import { deleteProject, updateProjectDescription, updateBeginningDate, updateDue
 
 class ManageProjects extends React.Component{
   removeProject = (e) => {
-    const projectInfo = "title=" + this.props.task.title
-    this.props.onDelete(this.props.taskId, projectInfo)
+    const projectInfo = "title=" + this.props.task.title;
+    this.props.onDelete(this.props.taskId, projectInfo);
     e.preventDefault();
-  }
+  };
 
   editProjectDescription = (e) => {
     if(this.editedDescription.value === '')
       e.preventDefault();
     else {
-      const projectInfo = "title=" + this.props.task.title + "&description=" + this.editedDescription.value
+      const projectInfo = "title=" + this.props.task.title + "&description=" + this.editedDescription.value;
       this.props.onDescriptionUpdate({
         description: this.editedDescription.value,
-        _id: this.props.taskId,
+        id: this.props.taskId,
         projectInfo
       });
-      this.editedDescription.value = ''
+      this.editedDescription.value = '';
       e.preventDefault();
     }
-  }
+  };
 
   editBeginningDate = (e) => {
     if(this.editedBeginningDate.value === '')
       e.preventDefault();
     else {
-      const projectInfo = "title=" + this.props.task.title + "&beginningDate=" + this.editedBeginningDate.value
+      const projectInfo = "title=" + this.props.task.title + "&beginningDate=" + this.editedBeginningDate.value;
       this.props.onBeginningDateUpdate({
         beginningDate: this.editedBeginningDate.value,
         id: this.props.taskId,
         projectInfo
       });
-      this.editedBeginningDate.value = ''
+      this.editedBeginningDate.value = '';
       e.preventDefault();
     }
-  }
+  };
 
   editDueDate = (e) => {
     if(this.editedDueDate.value === '')
       e.preventDefault();
     else {
-      const projectInfo = "title=" + this.props.task.title + "&dueDate=" + this.editedDueDate.value
+      const projectInfo = "title=" + this.props.task.title + "&dueDate=" + this.editedDueDate.value;
       this.props.onDueDateUpdate({
         dueDate: this.editedDueDate.value,
         id: this.props.taskId,
         projectInfo
       });
-      this.editedDueDate.value = ''
+      this.editedDueDate.value = '';
       e.preventDefault();
     }
-  }
+  };
 
   render() {
     const id = "collapseExample-" + this.props.taskId;
@@ -95,14 +95,14 @@ class ManageProjects extends React.Component{
         </div>
       </li>
     );
-  }
-}
+  };
+};
 
 const mapStateToProps = state => {
   return {
      isRoleManager: state.userLogin.isRoleManager
   }
-}
+};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -118,8 +118,8 @@ const mapDispatchToProps = dispatch => {
     onDueDateUpdate: project => {
       dispatch(updateDueDate(project))
     }
-  }
-}
+  };
+};
 
 export default connect(
   mapStateToProps,

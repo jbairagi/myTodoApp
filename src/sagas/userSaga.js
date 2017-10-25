@@ -7,30 +7,29 @@ export default function* userSaga() {
 }
 
 function* watchUserLogin({ userCredentials }) {
-  try {
+	try {
 		const response = yield call(login, userCredentials);
-		if(response.status === 200){
+		if (response.status === 200) {
 			window.localStorage.setItem('token', response.data.token);
-			yield all ([
+			yield all([
 				put({ type: 'SET_USER', user: response.data.username }),
 				put({ type: 'SET_LOGIN_STATUS', isLoggedIn: response.data.token !== undefined }),
 				put({ type: 'SET_USER_ROLE', isRoleManager: response.data.role === 'manager' })
-			]); 
+			]);
 		}
 		else
-			alert(response.message)
-	} 
+			alert(response.message);
+	}
 	catch (error) {
-		console.log(error)
-  	}
+		alert(error);
+	}
 }
 
 function* watchAddUser({ userInfo }) {
 	const response = yield call(addNewUser, userInfo);
-	// if(response.status === 200){
-	// 	alert(response.message)
-	// }
-	// else
-	// 	alert(response.message)
+	if (response.status === 200) {
+		alert(response.message);
+	}
+	else
+		alert(response.message);
 }
-  

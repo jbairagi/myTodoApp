@@ -1,1 +1,1 @@
-exports.ROOT_URL = `http://localhost:3000/`
+exports.ROOT_URL = 'http://localhost:3000/';
