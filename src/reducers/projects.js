@@ -1,4 +1,6 @@
 import * as types from '../constants/actionTypes';
+import { changeDateFormat } from '../utility/changeDateFormat';
+
 const initialStateUser = {
 	allProjects: [],
 	userProjects: []
@@ -7,14 +9,10 @@ const initialStateUser = {
 const projects = (state = initialStateUser, action, root) => {
 	switch (action.type) {
 	case types.GET_USER_PROJECTS: {
-		let beginningDate;
-		let dueDate;
 		action.projects.map(project => {
 			return (
-				beginningDate = new Date(project.beginningDate),
-				dueDate = new Date(project.dueDate),
-				project.beginningDate = beginningDate.toISOString().slice(0, 10),
-				project.dueDate = dueDate.toISOString().slice(0, 10)
+				project.beginningDate = changeDateFormat(project.beginningDate),
+				project.dueDate = changeDateFormat(project.dueDate)
 			);
 		});
 		const userProjectsTemp = {
@@ -25,17 +23,12 @@ const projects = (state = initialStateUser, action, root) => {
 	}
 
 	case types.SET_NEW_PROJECT: {
-		let beginningDate = new Date(action.response.project.beginningDate);
-		let dueDate = new Date(action.response.project.dueDate);
-		beginningDate = beginningDate.toISOString().slice(0, 10);
-		dueDate = dueDate.toISOString().slice(0, 10);
-
 		let project = {
 			_id: action.response.project._id,
 			title: action.response.project.title,
 			description: action.response.project.description,
-			beginningDate: beginningDate,
-			dueDate: dueDate
+			beginningDate: changeDateFormat(action.response.project.beginningDate),
+			dueDate: changeDateFormat(action.response.project.dueDate)
 		};
 		const allProjectsArrayP = [
 			...state.allProjects,
@@ -59,13 +52,9 @@ const projects = (state = initialStateUser, action, root) => {
 
 	case types.GET_ALL_PROJECTS: {
 		action.projects.map(project => {
-			let beginningDate;
-			let dueDate;
 			return (
-				beginningDate = new Date(project.beginningDate),
-				dueDate = new Date(project.dueDate),
-				project.beginningDate = beginningDate.toISOString().slice(0, 10),
-				project.dueDate = dueDate.toISOString().slice(0, 10)
+				project.beginningDate = changeDateFormat(project.beginningDate),
+				project.dueDate = changeDateFormat(project.dueDate)
 			);
 		});
 		const allProjects = {

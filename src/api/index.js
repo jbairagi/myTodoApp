@@ -1,4 +1,4 @@
-import { request } from './../helpers/fetchHelpers';
+import { request } from './../utility/fetchHelpers';
 
 export const login = body => {
 	return request('login', 'post', body);
