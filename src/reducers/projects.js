@@ -1,3 +1,4 @@
+import * as types from '../constants/actionTypes';
 const initialStateUser = {
 	allProjects: [],
 	userProjects: []
@@ -5,7 +6,7 @@ const initialStateUser = {
 
 const projects = (state = initialStateUser, action, root) => {
 	switch (action.type) {
-	case 'GET_USER_PROJECTS':
+	case types.GET_USER_PROJECTS: {
 		let beginningDate;
 		let dueDate;
 		action.projects.map(project => {
@@ -21,10 +22,11 @@ const projects = (state = initialStateUser, action, root) => {
 			userProjects: action.projects
 		};
 		return userProjectsTemp;
+	}
 
-	case 'SET_NEW_PROJECT':
-		beginningDate = new Date(action.response.project.beginningDate);
-		dueDate = new Date(action.response.project.dueDate);
+	case types.SET_NEW_PROJECT: {
+		let beginningDate = new Date(action.response.project.beginningDate);
+		let dueDate = new Date(action.response.project.dueDate);
 		beginningDate = beginningDate.toISOString().slice(0, 10);
 		dueDate = dueDate.toISOString().slice(0, 10);
 
@@ -53,9 +55,12 @@ const projects = (state = initialStateUser, action, root) => {
 			finalStateP.userProjects = userProjectsArrayP;
 		}
 		return finalStateP;
+	}
 
-	case 'GET_ALL_PROJECTS':
+	case types.GET_ALL_PROJECTS: {
 		action.projects.map(project => {
+			let beginningDate;
+			let dueDate;
 			return (
 				beginningDate = new Date(project.beginningDate),
 				dueDate = new Date(project.dueDate),
@@ -68,8 +73,9 @@ const projects = (state = initialStateUser, action, root) => {
 			allProjects: action.projects
 		};
 		return allProjects;
+	}
 
-	case 'UPDATE_DESCRIPTION':
+	case types.UPDATE_DESCRIPTION: {
 		const allProjectsArrayU = state.allProjects.map(project =>
 			(project._id === action.project.id)
 				? { ...project, description: action.project.description }
@@ -86,8 +92,9 @@ const projects = (state = initialStateUser, action, root) => {
 			userProjects: userProjectsArrayU
 		};
 		return finalStateU;
+	}
 
-	case 'UPDATE_BEGINNING_DATE':
+	case types.UPDATE_BEGINNING_DATE: {
 		const allProjectsArrayB = state.allProjects.map(project =>
 			(project._id === action.project.id)
 				? { ...project, beginningDate: action.project.beginningDate }
@@ -104,8 +111,9 @@ const projects = (state = initialStateUser, action, root) => {
 			userProjects: userProjectsArrayB
 		};
 		return finalStateB;
+	}
 
-	case 'UPDATE_DUE_DATE':
+	case types.UPDATE_DUE_DATE: {
 		const allProjectsArrayDD = state.allProjects.map(project =>
 			(project._id === action.project.id)
 				? { ...project, dueDate: action.project.dueDate }
@@ -122,9 +130,9 @@ const projects = (state = initialStateUser, action, root) => {
 			userProjects: userProjectsArrayDD
 		};
 		return finalStateDD;
+	}
 
-
-	case 'DELETE_PROJECT':
+	case types.DELETE_PROJECT: {
 		const allProjectsArrayD = state.allProjects.filter(function (e) {
 			return e._id !== action.id;
 		});
@@ -137,9 +145,11 @@ const projects = (state = initialStateUser, action, root) => {
 			userProjects: userProjectsArrayD
 		};
 		return finalStateD;
+	}
 
-	case 'CLEAR_STORE':
+	case types.CLEAR_STORE: {
 		return { allProjects: [], userProjects: [] };
+	}
 
 	default:
 		return state;

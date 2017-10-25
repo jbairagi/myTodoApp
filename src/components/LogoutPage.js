@@ -1,7 +1,7 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
-import {clearStore} from '../actions';
+import { clearStore } from '../actions';
 
 class logoutPage extends React.Component{
 	render(){

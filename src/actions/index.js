@@ -7,7 +7,7 @@ export const login = (userCredentials) => {
 
 export const projects = () => {
 	return {
-		type: 'PROJECT'
+		type: 'GET_PROJECTS'
 	};
 };
 

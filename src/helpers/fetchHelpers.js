@@ -1,4 +1,4 @@
-import {ROOT_URL} from './../constants/constants';
+import {ROOT_URL} from './../constants/urlConstants';
 
 export const request = (path, method, body = null) => {
 	let headers = {

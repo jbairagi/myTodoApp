@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addNewProject } from '../actions';
 
-const AddProjectForm = ({ dispatch, user }) => {
+const AddProjectForm = ({ dispatch }) => {
 	let title, description, beginningDate, dueDate, developer;
 	return (
 		<div>
@@ -48,10 +48,4 @@ const AddProjectForm = ({ dispatch, user }) => {
 	);
 };
 
-const mapStateToProps = state => {
-	return {
-		user: state.userLogin.user
-	};
-};
-
-export default connect(mapStateToProps)(AddProjectForm);
+export default connect()(AddProjectForm);
