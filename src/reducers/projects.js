@@ -15,11 +15,11 @@ const projects = (state = initialStateUser, action, root) => {
 				project.dueDate = changeDateFormat(project.dueDate)
 			);
 		});
-		const userProjectsTemp = {
+		const newUserProjects = {
 			...state,
 			userProjects: action.projects
 		};
-		return userProjectsTemp;
+		return newUserProjects;
 	}
 
 	case types.SET_NEW_PROJECT: {
@@ -30,24 +30,24 @@ const projects = (state = initialStateUser, action, root) => {
 			beginningDate: changeDateFormat(action.response.project.beginningDate),
 			dueDate: changeDateFormat(action.response.project.dueDate)
 		};
-		const allProjectsArrayP = [
+		const allProjectsArrayNewProject = [
 			...state.allProjects,
 			project
 		];
 
-		const finalStateP = {
+		const finalStateNewProject = {
 			...state,
-			allProjects: allProjectsArrayP
+			allProjects: allProjectsArrayNewProject
 		};
 
 		if (root.userLogin.user === action.response.developer) {
-			const userProjectsArrayP = [
+			const userProjectsArrayNewProject = [
 				...state.userProjects,
 				project
 			];
-			finalStateP.userProjects = userProjectsArrayP;
+			finalStateNewProject.userProjects = userProjectsArrayNewProject;
 		}
-		return finalStateP;
+		return finalStateNewProject;
 	}
 
 	case types.GET_ALL_PROJECTS: {
@@ -65,75 +65,75 @@ const projects = (state = initialStateUser, action, root) => {
 	}
 
 	case types.UPDATE_DESCRIPTION: {
-		const allProjectsArrayU = state.allProjects.map(project =>
+		const allProjectsArrayUpdateDescription = state.allProjects.map(project =>
 			(project._id === action.project.id)
 				? { ...project, description: action.project.description }
 				: project);
 
-		const userProjectsArrayU = state.userProjects.map(project =>
+		const userProjectsArrayUpdateDescription = state.userProjects.map(project =>
 			(project._id === action.project.id)
 				? { ...project, description: action.project.description }
 				: project);
 
-		const finalStateU = {
+		const finalStateUpdateDescription = {
 			...state,
-			allProjects: allProjectsArrayU,
-			userProjects: userProjectsArrayU
+			allProjects: allProjectsArrayUpdateDescription,
+			userProjects: userProjectsArrayUpdateDescription
 		};
-		return finalStateU;
+		return finalStateUpdateDescription;
 	}
 
 	case types.UPDATE_BEGINNING_DATE: {
-		const allProjectsArrayB = state.allProjects.map(project =>
+		const allProjectsArrayBeginningDate = state.allProjects.map(project =>
 			(project._id === action.project.id)
 				? { ...project, beginningDate: action.project.beginningDate }
 				: project);
 
-		const userProjectsArrayB = state.userProjects.map(project =>
+		const userProjectsArrayBeginningDate = state.userProjects.map(project =>
 			(project._id === action.project.id)
 				? { ...project, beginningDate: action.project.beginningDate }
 				: project);
 
-		const finalStateB = {
+		const finalStateBeginningDate = {
 			...state,
-			allProjects: allProjectsArrayB,
-			userProjects: userProjectsArrayB
+			allProjects: allProjectsArrayBeginningDate,
+			userProjects: userProjectsArrayBeginningDate
 		};
-		return finalStateB;
+		return finalStateBeginningDate;
 	}
 
 	case types.UPDATE_DUE_DATE: {
-		const allProjectsArrayDD = state.allProjects.map(project =>
+		const allProjectsArrayDueDate = state.allProjects.map(project =>
 			(project._id === action.project.id)
 				? { ...project, dueDate: action.project.dueDate }
 				: project);
 
-		const userProjectsArrayDD = state.userProjects.map(project =>
+		const userProjectsArrayDueDate = state.userProjects.map(project =>
 			(project._id === action.project.id)
 				? { ...project, dueDate: action.project.dueDate }
 				: project);
 
-		const finalStateDD = {
+		const finalStateDueDate = {
 			...state,
-			allProjects: allProjectsArrayDD,
-			userProjects: userProjectsArrayDD
+			allProjects: allProjectsArrayDueDate,
+			userProjects: userProjectsArrayDueDate
 		};
-		return finalStateDD;
+		return finalStateDueDate;
 	}
 
 	case types.DELETE_PROJECT: {
-		const allProjectsArrayD = state.allProjects.filter(function (e) {
+		const allProjectsArrayDelete = state.allProjects.filter(function (e) {
 			return e._id !== action.id;
 		});
-		const userProjectsArrayD = state.userProjects.filter(function (e) {
+		const userProjectsArrayDelete = state.userProjects.filter(function (e) {
 			return e._id !== action.id;
 		});
-		const finalStateD = {
+		const finalStateDelete = {
 			...state,
-			allProjects: allProjectsArrayD,
-			userProjects: userProjectsArrayD
+			allProjects: allProjectsArrayDelete,
+			userProjects: userProjectsArrayDelete
 		};
-		return finalStateD;
+		return finalStateDelete;
 	}
 
 	case types.CLEAR_STORE: {
